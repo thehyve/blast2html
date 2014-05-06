@@ -397,7 +397,22 @@
 <h3>Distribution of 45 Blast Hits on the Query Sequence
 <a aria-expanded="false" role="button" aria-disabled="false" class="helplink jig-ncbitoggler ui-ncbitoggler ui-widget" title="Graphic summary help" id="grHelp" href="#"><span class="ui-ncbitoggler-master-text"><span>[?]</span></span>
 <span class="ui-icon ui-icon-triangle-1-e"></span></a></h3>
-<!-- ARIA -->
+<div class="ui-helper-reset" aria-live="assertive">
+<p aria-hidden="true" id="ovrInfo" class="helpbox ui-ncbitoggler-slave ui-ncbitoggler">
+An overview of the database sequences aligned to the query sequence is 
+shown. The score of each alignment is indicated by one of five 
+different colors, which divides the range of scores into five groups. 
+Multiple alignments on the same database sequence are connected 
+by a striped line. <span class="hl">Mousing over</span> a hit sequence causes the definition and score to be shown in the window at the top, 
+<span class="hl">clicking</span> on a hit sequence takes the user to the associated alignments.
+New:
+This graphic is an overview of database sequences aligned to the query sequence.
+Alignments are color-coded by score, within one of five score ranges.  
+Multiple alignments on the same database sequence are connected by a dashed line.
+<span class="hl">Mousing</span> over an alignment shows the alignment definition and score in the box at the top. 
+<span class="hl">Clicking</span> an alignment displays the alignment detail.
+</p>
+</div><!-- ARIA -->
 <center><input name="defline" size="85" value="Mouse-over to show defline and scores, click to show alignments" type="text"><table bordercolordark="#0000FF" bordercolorlight="#0000FF" border="1" cellpadding="10" cellspacing="0"><tbody><tr><td align="LEFT" valign="CENTER"><table border="0" cellpadding="0" cellspacing="1"><tbody><tr><td align="LEFT" valign="CENTER"><img alt="" src="Blast%20output%20page%20example%20trimmed_files/white.gif" height="4" width="50"></td>
 <td align="LEFT" valign="CENTER"><img alt="" src="Blast%20output%20page%20example%20trimmed_files/score.gif" height="40" width="500"></td>
 </tr></tbody></table>
@@ -501,19 +516,19 @@
 <div class="ui-helper-reset" aria-live="assertive">
 <div aria-hidden="false" id="descrInfo" class="resBox ui-ncbitoggler-slave-open ui-widget ui-ncbitoggler">
  <!-- legend to links to other resources -->
+<a name="sort_mark"></a>
 
 
-
-
-
-
-<!-- Indicates genbank, etc -->
-
-
-
-
-
-
+<div id="debug">, Reading indexes 1-5, displaying indexes 1-5</div>
+<input id="Rid" value="PHWP1JNZ014" type="hidden">
+<input id="useAlignDB" name="useAlignDB" value="" type="hidden">
+<input id="dbType" value="GenBank" type="hidden"><!-- Indicates genbank, etc -->
+<input id="serviceType" value="plain" type="hidden">
+<input id="clientType" value="web" type="hidden">
+<input id="currQuery" value="" type="hidden">
+<input id="minDispAlnLen" value="2000" type="hidden">
+<input id="maxDispAlnLen" value="20000" type="hidden">
+<div class="hidden" id="dynHspTmpl"><div class="alnParLinks moreHsps" id="@moreHspsID@"><a class="gbd toolsCtr navNext" title="Load matches @segs@ out of @totalHSP@ for @accs@" onmouseover="scan(this)" ref="range=@segs@&amp;currseq=@alnSeqGi@" onclick="ReadNextHSPSet(@argstring@);"><span>Load next set</span></a><a class="gbd toolsCtr navPrev" title="Go to previous match #@aln_prev_num@ for @accs@" onclick="goToNextHSP(this,false)"><span>Previous Match</span></a></div></div>
 <div id="descriptions" class="blRes">
 <!--<pre> -->
 <div class="cap">Sequences producing significant alignments:</div>
@@ -529,7 +544,20 @@ Show all columns <span class="accsb"> of the table presenting sequences producin
 <a href="#alignInfo" id="alnNav" class="toolsCtr alnNav" title="Go to alignments"><span>Alignments</span></a>
 <a aria-haspopup="true" aria-expanded="false" role="button" href="#dsDownload" minslct="1" class="jig-ncbipopper toolsCtr dnld dialog " data-jigconfig="hasArrow:'true',arrowDirection:'top'" id="dscDwnld" disabled="disabled" title="Download information for selected sequences"><span>Download</span></a>
 
- <!-- dsDownload -->
+<div style="top: -100px; left: -100px; display: none;" aria-hidden="true" aria-live="assertive" id="dsDownload" class="popDl ui-helper-reset ui-ncbipopper-wrapper ui-ncbipopper-basic">
+<div class=""><input name="dwn" checked="checked" id="dwFST" fstadwtype="complete" sbfunc="initDownLoadFSTA" type="radio"><label class="shownInl" for="dwFST">FASTA (complete sequence)</label></div>
+<div class=""><input name="dwn" id="dwFSTAl" fstadwtype="range" sbfunc="initDownLoadFSTA" type="radio"><label class="shownInl" for="dwFSTAl">FASTA (aligned sequences)</label></div>
+<div class=""><input name="dwn" id="dwGenBank" getgi="on" sbname="id" url="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&amp;rettype=gb&amp;retmode=text" type="radio"><label class=" shownInl" for="dwGenBank">GenBank (complete sequence)</label></div>
+<div><input name="dwn" id="dwHitText" url="Blast.cgi?RESULTS_FILE=on&amp;RID=PHWP1JNZ014&amp;FORMAT_TYPE=Text&amp;FORMAT_OBJECT=Alignment&amp;ALIGNMENT_VIEW=Tabular&amp;CMD=Get" type="radio"><label class="shownInl" for="dwHitText">Hit Table (text)</label></div>
+<div><input name="dwn" id="dwHitCsv" url="Blast.cgi?RESULTS_FILE=on&amp;RID=PHWP1JNZ014&amp;FORMAT_TYPE=CSV&amp;FORMAT_OBJECT=Alignment&amp;ALIGNMENT_VIEW=Tabular&amp;CMD=Get" type="radio"><label class="shownInl" for="dwHitCsv">Hit Table (CSV)</label></div>
+<div><input name="dwn" id="dwText" url="Blast.cgi?RESULTS_FILE=on&amp;RID=PHWP1JNZ014&amp;FORMAT_TYPE=Text&amp;FORMAT_OBJECT=Alignment&amp;CMD=Get" type="radio"><label class="shownInl" for="dwText">Text</label></div>
+<div><input name="dwn" id="dwXML" url="Blast.cgi?RESULTS_FILE=on&amp;RID=PHWP1JNZ014&amp;FORMAT_TYPE=XML&amp;FORMAT_OBJECT=Alignment&amp;CMD=Get" type="radio"><label class="shownInl" for="dwXML">XML</label></div>
+<div><input name="dwn" id="dwASN" url="Blast.cgi?RESULTS_FILE=on&amp;RID=PHWP1JNZ014&amp;FORMAT_TYPE=ASN.1&amp;FORMAT_OBJECT=Alignment&amp;CMD=Get" type="radio"><label class="shownInl" for="dwASN">ASN.1</label></div>
+<div>
+<button class="cfg" id="dw_cont">Continue</button>
+<button class="cfg cnc">Cancel</button>
+</div>  
+</div> <!-- dsDownload -->
 
 
 
