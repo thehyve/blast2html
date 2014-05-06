@@ -1,0 +1,332 @@
+#msgR .info {
+background-color: #dfd;
+padding: 4px;
+border: solid 1px green;
+color: green;
+}
+
+dl.summary dt {
+float: left;
+width: 8em;
+clear:left;
+margin: 0;
+text-align: right;
+padding-right: 1em;
+color: #666;
+}
+
+dl.summary dd {
+padding-left: 0.5em;
+display: block;
+margin-left: 7em !important;
+margin: 0;
+}
+dl.summary dt, dl.summary dd {
+margin-bottom: 0.5em;
+}
+a.help 
+{
+float:right;	
+font-size: 110%;
+}
+
+dl.summary label {
+display: inline;
+}
+
+dl.summary tr th label {
+padding: 0;
+margin-right:0;
+}
+table.options {
+border: solid 1px #ccc;
+border-right: solid 1px #ccc;
+}
+
+table.options td,
+table.options td.frh {
+font-size: 90%;
+_font-size: 85%;
+}
+
+table.options label.rb {
+border-right: solid 1px #ccc;
+margin-right: 0.5em;
+padding-right: 2.0em;
+}
+
+table.options tr td {
+_font-size: 90%;
+padding-left: 0.5em;
+}
+
+table.options {
+/*border-collapse: collapse;*/
+margin-left: 0;
+padding-left: 0;
+width: 62em;
+}
+
+table.options td label {
+font-size: 90%;
+}
+
+table.options th label,
+table.options td label {
+margin-right: 0;
+_position: relative;
+_top: -0.1em;
+}
+
+table.options tr.hdr td,
+table.options tr.hdr th {
+padding: 2px;
+border: solid 1px #ccc;
+background-color: #ddd;
+}
+
+table.options td, table.options td.frh {
+padding: 0.25em 0;
+vertical-align: center;
+}
+
+table.options th {
+padding-right: 1em;
+text-align: right;
+padding-left: 1em;
+}
+
+/*
+*:focus{
+background-color: white !important;
+}
+*/
+
+table.options select,table.options input, #graphic input{
+border: solid 1px #888;
+padding: 1px;
+}
+
+select {
+font-size: 90%;
+}
+
+select option {
+padding-right: 0.5em;
+}
+
+input.cb, table.options input.cb {
+border: none;
+}
+
+select {
+margin-right:1em;
+}
+
+table.options tr {
+background-color: #eee;
+}
+
+table.options tr.odd {
+background-color: #e0e0e0;
+}
+
+table.options th {
+
+background-color: white;
+}
+
+table.options tr.paramSet td
+{
+	border-top: solid 2px white;		
+}
+
+
+
+
+.resetAll 
+{
+font-weight: normal;
+padding: 0.5em;
+font-size: 90%;
+margin-left:5em;
+}
+
+.button {
+background-color: #ccc;
+padding: 0.25em 0.25em;
+color: black;
+border: outset 3px #eee;
+_border: outset 3px #eee;
+font-size: 90%;
+_padding:0;
+font-weight: bold;
+height:25px;
+_height:22px;
+}
+
+.fbtn {
+margin-bottom: 0.5em;
+}
+
+.note {
+font-size: 80%;
+color: green;
+background-color: #ffc;
+margin-left: 2em;
+padding: 3px;
+}
+.instr {
+   margin-left: 1em;
+   color: #666;
+font-size: 90%;
+}
+.smaller {
+font-size: 90%;
+font-weight: normal;
+}
+
+/* Results Page styles */
+
+#ridRes 
+{
+	background-color: #FC9;	
+	padding:5px 5px;	
+}
+
+
+span dd.hidden,dt.hidden,dd.hidden span
+{
+	display:none;
+}
+
+dl.query .query,
+dl.title .title,
+dl.entrez .entrez,  
+dl.db .db  
+{
+	display:block;	
+}
+
+
+dl.entrez span.entrez
+{
+	display:inline;	
+}
+
+.hidden {
+display: none;
+}
+.hide {
+display: none;
+}
+.shown {
+display: block;
+}
+
+
+
+table.megaBlast tr.psiBlast,
+table.blastn tr.psiBlast,
+table.blastx tr.psiBlast,
+table.tblastn tr.psiBlast,
+table.tblastx tr.psiBlast,
+table.discoMegablast tr.psiBlast
+{
+display: none;
+}
+
+
+table.GlobalAln .xgl,
+body.GlobalAln div.xgl,
+body.GlobalAln dt.xgl,
+body.GlobalAln dd.xgl,
+body.GlobalAln span.xgl,
+body.GlobalAln table.xgl
+{
+display: none;
+}
+
+.dispType
+{
+	/*background-color:White;
+	border:solid 1px black;*/	
+	border-top:solid 2px gray;
+	border-left:solid 2px gray;	
+	font-size:90%;	
+	padding-left:2px;
+	
+}
+
+.newwin {
+border: none;
+}
+
+table.options .helplink
+{
+    font-weight:bold;
+    position:absolute;
+    right:0;
+}
+
+div#query label 
+{
+    display: inline;
+    font-weight:bold;
+    padding-right:1em;
+}
+#NEW_VIEW
+{
+    _margin-left:-2px;
+}
+
+
+table.blastp *.blastn,
+table.psiBlast *.blastn,
+table.phiBlast *.blastn,
+table.blastx *.blastn,
+table.tblastn *.blastn,
+table.tblastx *.blastn
+{
+display: none;
+}
+
+#formatTable th.col1 {
+width: 8em;
+vertical-align: top;
+}
+/*
+#formatTable .helplink span {
+position: relative;
+}
+*/
+#org
+{
+    margin-top:2em;      
+}
+#qorganism
+{
+    /*display:block;*/
+}    
+.fi
+{
+    position:relative;
+}
+
+a#organismHelp
+{
+    margin-top:-1.5em;
+}
+
+table.options tr.paramSet td.hd {
+padding-right: 1em;
+text-align: right;
+padding-left: 1em;
+background-color:White;
+font-weight:bold;
+border-top:none;
+}
+.oExcl
+{
+    margin-left:2px;
+}

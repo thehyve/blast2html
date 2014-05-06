@@ -1,0 +1,623 @@
+/* style changes for redesign begin*/
+a.gbd
+{
+    text-decoration:none;
+}
+
+tr.dflLnk td span
+{ 
+    font-size:78%; 
+    display:none;
+    text-align:center;
+}
+a.dflSeq
+{
+    color:#369;
+    text-decoration:underline;
+    width:auto;    
+}
+table.defln tr.dflLnk a
+{
+	margin-right:auto;	
+	padding-left:0;
+}
+
+.alnParLinks
+{
+    float:right;    
+}
+
+.alnSeqLinks
+{
+    float:right;
+    margin-right:1em;    
+}
+
+
+.seqlinks select
+{
+    padding:0;
+}
+
+.dlfRow div
+{
+    font-size:90%;
+}
+
+.dlfRow
+{
+    display:inline;
+    font-size:110%;
+}
+
+.dlfRow.hidden
+{
+    display:none;    
+}
+.dlfRow label
+{
+    font-size:87%;
+    display:inline;
+    color:#606060;
+    font-weight:bold;
+}
+
+.dlfRow span.r label
+{
+    padding-left:0.8em;
+}
+
+
+div.relInf
+{
+    font-family: Verdana, Sans-Serif;
+    font-size: 80%;
+    float:right;    
+    width:21%;
+    border-top:solid 2px gray;
+    margin-top:-1em;
+    margin-right:3.5em;
+    left:3em;
+    max-width:25em;    
+    padding-left:1em;
+    position:relative;    
+    white-space:normal;    
+}
+
+div.relInf a
+{
+    padding-right:0.2em;
+}
+
+.rlLink
+{
+    padding-left:0.2em;
+}
+.relInf label
+{
+    font-size:110%;
+    color:brown;
+    font-weight:bold;    
+}
+div#content
+{
+    min-width:70em;
+}
+
+.dflLnk a
+{
+	font-size:90%;
+}
+a.dflSeq
+{
+    width:auto;
+    font-weight:normal;
+}
+
+
+#cntDesc,#cntDesc_psiw  
+{
+    margin-bottom:0.2em;
+    display:inline-block;
+    width:20em;
+}
+#cntDesc span,#cntDesc_psiw span
+{
+    margin-right:0.5em;
+}
+
+#cntDesc a,#cntDesc input,#cntDesc_psiw a,#cntDesc_psiw input
+{
+    margin-left:0.5em;
+}
+
+#cntSelNone,#cntShAll
+{
+    margin-left:0.2em;
+}
+
+.toolsCtr
+{
+    color:Blue;    
+}
+
+table.ui-ncbigrid th span.slink a 
+{
+  display:inline;  
+  padding-right: 0;  
+}
+table.ui-ncbigrid th.sp
+{
+    font-weight:bold;
+}
+
+table.ui-ncbigrid th span.slink
+{
+    margin-left:0.2em;
+}
+
+table.ui-ncbigrid td {
+ white-space:nowrap;
+}
+table.ui-ncbigrid td.c3
+{
+    /*padding-left:0.8em;*/
+}
+table.ui-ncbigrid caption
+{
+    font-size:0;
+    line-height:0;
+}
+#content h3.cap,#content h3.cap a.ui-ncbitoggler.ui-widget, #content h3.cap a.ui-ncbitoggler-open
+{
+    color:#4d4d4d;
+    text-align:left;
+    margin:0 0 0.5em 0;
+}
+
+#content div.cap,#content div.cap a.ui-ncbitoggler.ui-widget, #content div.cap a.ui-ncbitoggler-open
+{
+    color:#4d4d4d;
+    text-align:left;
+    margin:0 0 0.5em 0;
+    letter-spacing:-1px;
+    font-size:110%;
+    font-weight:bold;
+}
+
+#descriptions div.caption-exists {
+  margin: 0;
+}
+
+/**********decrition toolbar styles *********/
+
+div.cnf {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;  
+  background: url("images/cnf.png") repeat scroll 0 0 transparent; 
+  border-style: solid none none;
+  border-width: 1px medium medium;
+  /*clear: left;*/
+  height: 22px;
+  /*overflow: auto;*/
+  width: 100%;
+}
+
+ul.ui-ncbilocalnav li.has-child a.button_config {
+  background: url("/portal/portal3rc.fcgi/3493904/img/81796") no-repeat scroll right center transparent !important;
+  width: 22px;
+  height:22px;
+  margin-left:12em;
+}
+
+#li-config
+{
+    float:right;
+    width:17em;
+}
+div#descTblCtrl ul.ui-ncbilocalnav li
+{
+    border-right:none;
+}
+
+
+.cfg
+{
+    font-size:90%;
+}
+
+
+.oneSeqAln .hsp label
+{
+    color:#606060;
+    font-size:95%;
+    padding-right:0.5em;
+}
+
+.oneSeqAln pre
+{
+    margin-top:0.5em;
+}
+
+.aln_feat label
+{
+  color: #606060;
+  font-size: 95%;
+  padding-right: 0.5em;  
+}
+.oneSeqAln .dflLnk.aln_feat
+{
+    padding-bottom:1em;
+}
+div.oneSeqAln h4
+{
+    border:none;
+    font-size:100%; 
+    font-weight:normal;
+    letter-spacing:normal;
+    margin:0;
+}
+    
+.oneSeqAln .dflLnk
+{
+    width:56em;
+}
+.aln_feat a
+{
+    margin-left:1em;
+    display:block;
+}
+.dflLnk.aln_feat div
+{
+  /*display:inline-block;  */
+  margin-left:5em;
+  margin-top:-1em;
+}
+.aln_frame.shown
+{
+    display:block;
+}
+/*align params styles change */
+
+table.alnParams
+{
+    border-left:none;        
+    border-right:none;        
+    margin-top:0.5em;
+    width:49em;
+}
+
+table.alnParams th
+{
+    background-color:Transparent;    
+    border:none;    
+    text-align:left;
+}
+
+table.alnParams td
+{
+   border:none;      
+}
+
+
+.alnAll
+{
+    line-height:normal;
+    margin-top:1em;
+}
+
+.alnAll div
+{
+    width:70%;
+}
+
+/**new config staff begin**/
+.popDl
+{
+    display:none;
+}
+.popDl div
+{
+    margin-top:0.5em;
+}
+.popDl div.tl
+{
+    margin-top:0;
+    font-weight:bold;
+}
+a.button_config {  
+  background: url("images/cnfButn.png") no-repeat scroll right center transparent !important;
+  width: 22px;
+  height:22px;
+  margin-left:12em;
+  float:right;
+}
+
+a.toolsCtr,span.csLinks a
+{
+    margin-left:8px;
+    float:left;
+    cursor:pointer;
+}
+
+a.toolsCtr[disabled] {
+  cursor: default;
+}
+
+
+a.toolsCtr SPAN
+{
+	color: #14376c;
+	/*line-height: 22px;*/
+	padding-left: 15px;
+	background-repeat: no-repeat;
+	background-position:left center;		
+}
+
+a.toolsCtr[disabled] SPAN,a.toolsCtr[disabled]
+{
+    color:#C2C2C2;
+}
+
+a.dnld span
+{
+	background-image: url("images/dndl.png");
+}
+
+a.dnld[disabled] span
+{
+	background-image: url("images/dndl_dsb.png");
+}
+
+a.dialog
+{
+	padding-right: 18px;
+	background:transparent url(images/dialog.png) no-repeat scroll right center;	
+	text-decoration:none;
+}
+
+a.dialog[disabled] {
+    background-image: url("images/dialog_dsb.png");
+}
+
+
+a.alnNav span
+{
+	background-image: url("images/align_Normal.png");
+}
+
+a.alnNav
+{
+    text-decoration:none;
+}
+
+
+a.navNext span
+{
+	background-image: url("images/next_Normal.png");
+}
+
+
+a.navNext[disabled] span
+{	
+	background-image: url("images/next_Inactive.png");
+}
+
+
+a.navPrev span
+{
+	background-image: url("images/prev_Normal.png");
+}
+
+
+a.navPrev[disabled] span
+{
+	background-image: url("images/prev_Inactive.png");
+}
+
+
+a.navBack span
+{
+	background-image: url("images/table_Normal.png");
+}
+
+.alnRn
+{
+    float:left;
+}
+
+
+/* styles to change per discusssion with Mark begin*/
+.dflLnk a
+{
+	padding-left:0;	
+}
+
+
+table.ui-ncbigrid th {
+  padding-left:0.3em;
+  padding-right:0;
+  text-align:center;  
+}
+
+table.ui-ncbigrid td {
+  padding-left:0.4em;
+  padding-right:0.4em;
+  text-align:center;  
+}
+
+table.ui-ncbigrid td.c2,table.ui-ncbigrid td.c1 {  
+  text-align:left;  
+}
+
+table.ui-ncbigrid td.c3{
+  padding:0.363em 0.25em;
+}
+
+
+table.ui-ncbigrid th a {
+  padding-right: 5px;
+}
+table.ui-ncbigrid th.c0
+{
+    width:25px;
+    padding:0;
+}
+
+.dflnDth
+{
+    width:100%;
+}
+div.lim { 
+  width: 14em;
+}
+
+table.ui-ncbigrid th.c8,table.ui-ncbigrid th.c9 {  
+  padding-right: 0.3em;  
+}
+.c8,.c9
+{
+    font-size:80%;
+}
+
+
+td.lim.l.c2,td.lim.l.c1 
+{
+    overflow:hidden;
+}
+a.spr
+{ 
+    border-right:none; 
+}
+
+
+.psiInp 
+{
+    margin-left:1em;
+    margin-top:0.5em;
+}
+
+
+.c8 input
+{
+    border:none;
+}
+table.ui-ncbigrid td.c8
+{
+    padding-left:1.5em;
+}
+
+tr.psi_new td
+{
+    background-color:#FFFF99;
+    border-top:solid 4px white;
+    border-spacing:3px;
+    border-collapse:collapse;
+    line-height:normal;
+}
+/* accessibility setting */
+tr.dflLnk td span.psiNw,tr.first th span,a.button_config span, a span.accsb,.dflLnk label.accsb
+{
+    display:inline;
+    position:absolute;
+    left:-9999px;
+}
+
+div.tgl
+{
+    margin-top:-1em;
+}
+.shcl
+{
+    float:right;
+}
+
+/* styles to change per discusssion with Mark end*/
+
+.alnRn a
+{
+    padding-right:1em;
+}
+.alnAll .moreHsps
+{
+    font-family: Verdana, Sans-Serif;
+    font-size: 75%;        
+    margin-top:-2.5em;
+    width:58%;
+}
+.erm
+{
+    background-color:#FFFFCC;
+    padding:0.5em;    
+}
+
+#debug,.ind,.alnMsgS .db,.erm .db
+{
+    display:none;
+}
+
+.tmsAln label
+{
+    font-size:93%;
+    display:inline;
+    color:#606060;
+    font-weight:bold;
+}
+.alnAll .tmsAln, .tmsAln div
+{
+    width:100%;
+    margin-bottom:-1em;
+}
+.tmsAlnPar
+{
+    margin-top:-1em;
+}
+/*debug info styles begin */
+
+
+/* use those styles only in debug version 
+
+.alnMsg
+{
+    border:solid 1px black;
+}
+
+.alnMsgS.hidden,.alnMsgS .db
+{
+    display:block;
+}
+
+.oneSeqAln
+{
+    border:1px solid #C8C8C8;
+}
+
+#debug,tr.dflLnk td span.ind
+{
+    display:inline;
+}
+.c0
+{
+    width:30px;
+}
+/*debug info styles end */
+
+
+
+/**new config staff end**/
+/*
+ul.ui-ncbilocalnav li, ul.ui-ncbilocalnav {
+  background-color: #F4F4F4;
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #F4F4F4);
+}
+ul.ui-ncbilocalnav li {
+  border-right: 1px solid #C4C4C4;
+}
+*/
+/**********decrition toolbar styles end*********/
+
+
+/* style chenges for redesign end*/

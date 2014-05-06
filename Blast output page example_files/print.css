@@ -1,0 +1,305 @@
+/*
+LEGAL
+=====
+Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au & http://www.mollio.org/
+License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php
+Version: 010306
+*/
+
+
+body {font: 10pt arial,tahoma,verdana,sans-serif}
+h1, h2, h3, h4, h5, h6 {margin: 1em 0 .2em;font-family: arial,tahoma,verdana,sans-serif}
+
+* {float:none;position:static;background:#fff}
+p {margin: 0 0 1em}
+dt {font-weight:bold}
+
+#nav, #search, #nav-secondary,  #poweredby {display:none}
+
+/* =LINKS */
+a {border:none}
+a,a:link,a:link,a:link,a:hover {background:transparent;text-decoration:underline;cursor:pointer} 
+a:link {color:#5291c4} 
+a:visited {color:#666}
+a:hover {color:#ff9900;border:none} 
+a:active {color:#0066cc} 
+
+.teaserBox {clear:both;margin: 0 0 1em}
+
+.sponsors img {margin: .5em 0}
+
+#footer {margin: 1em 0}
+
+#jtitle {
+border-bottom:2px solid black;
+margin-top:0.25em;;
+margin-left:-1.5em;;
+margin-bottom: 2em;;
+font-size: 110%;;
+padding-bottoM:0.5em;;
+}
+
+/* TABLES */
+table {font-size: 9pt;margin: 0 0 1em;border-collapse:collapse;}
+
+	table th {border-bottom: 3px solid #000;vertical-align:top;padding: 1.5em 3px 3px;line-height:1.1;font: bold 145% arial;letter-spacing:0;text-align:left}
+	.table1 th.time {border-bottom: none;font: bold 89% verdana;color:#ff9c00;vertical-align:top;padding: 3px}
+	.table1 td {border: 1px solid #ddd;font-size: 9pt;padding: 3px;vertical-align:top}
+	.table1 td a {display:block;width:auto;font-weight:bold}
+	.table1 td a:link, .table1 td a:visited, .table1 td a:hover, .table1 td a:active {border:none;text-decoration:none}
+	.table1 th.sub {background: #aaa}
+	.table1 th.sub2 {background: #bbb;color:#000}
+	.table1 td ul li {background: #fff}
+
+
+#logolink img {
+display: none;
+}
+
+#site-name {
+font-size: 140%;
+font-weight: bold;
+padding: 3px;
+text-align:center;
+}
+
+div.resHeader {
+display:  none;
+}
+
+#content-wrap {
+margin : 0 0.25in;
+}
+
+#blHeader pre, #query pre {
+white-space: normal;
+}
+
+#blHeader pre p {
+display: none; /* Get rid of pointer to BLAST FAQs */
+}
+
+#graphic input {
+display: none;
+}
+
+#descs td { vertical-align: top; }
+td.lim { white-space: normal; padding-bottom: 0.5em;}
+#descs td { vertical-align: top; border-bottom: solid 1px #888; border-collapse: collapse; padding-top: 0;}
+
+#descs a {
+text-decoration: none;
+color: black;
+padding: 0;
+margin: 0;
+}
+
+#descs th {
+font-size: 110%;
+}
+
+#graphic table {
+margin: 0;
+}
+
+input {
+display: none;
+}
+
+#graphic h3 a {
+border-bottom:2px solid black;
+color:black;
+display:block;
+margin-bottom:2em;
+margin-top:3em;
+text-align:left;
+text-decoration:none;
+margin-left: -1.5em;
+}
+
+
+#graphic {page-break-after: always; }
+
+td.l a { padding: 0; margin-right: 1em !important; font-weight:bold;}
+#descs td {color: black;}
+
+/* Get rid of stupid long headers */
+#desctbl { margin-top: 1em; border-top: solid 1px #ccc; page-break-after: always;}
+#desctbl table thead { display: none; margin-top: 1em;} 
+#desctbl table tr td { width: 4em; } 
+#desctbl table td.lim { width: 40em; }
+
+#alignments { line-height: 0.9em; }
+#alignments center b {
+ display: block; z-index: 100; position: relative; 
+}
+#alignments center b font { color: black; display: block; text-align: left; font-size: 120%; padding: 0 0 3px; border-bottom: solid 2px #444; margin-left: -1.5em; }
+
+div#alignments.blRes a { text-decoration: none; color: black; font-weight: bold; }
+
+#footer {
+display: none;
+}
+
+h1
+{
+font-size:120%;
+font-weight:bold;
+}
+#FormatForm,#FormatDownload,#showDetails,#queryHelp,#dbDetails,.reslink
+{
+    display:none;
+}
+#multipleSeqs,#queryInfo,.skp,.resLink,.seqlinks,.msg
+{
+   display:none;
+}
+
+#dbDetails,#refInfo,#seealso,#resStat,#showRefs,dd.hidden
+{
+    display:none;
+}
+/*
+#querysummary dl
+{
+ line-height:1.4em;
+}
+
+#querysummary dd
+{
+    margin-left:20%;
+    margin-top:-1.2em;
+}
+
+#querysummary dd a
+{
+    display:none;
+}
+*/
+
+#summary {
+font-size:1.2em;
+}
+#summary {
+margin-top:0pt;
+padding-bottom:1em;
+padding-top:0.5em;
+font-family:Verdana,Arial,Sans-Serif;
+font-size:90%;
+
+}
+#summarylists {
+margin:1em 0pt 0pt;
+overflow:hidden;
+}
+#querysummary {
+float:left;
+padding:0pt;
+width:49%;
+}
+
+#dbsummary {
+margin-left:51%;
+padding:0pt;
+}
+#summary dl {
+margin:0pt 0pt 0.5em;
+padding:0pt;
+}
+#summary dt, #summary dd {
+line-height:1.4em;
+}
+#summary dt {
+float:left;
+font-weight:bold;
+text-align:right;
+width:10em;
+margin-top:0;
+}
+#summary dd {
+margin-left:11em;
+white-space:normal !important;
+}
+#summary h3 {
+color:#444444;
+font-style:italic;
+margin-bottom:-0.5em;
+margin-top:0pt;
+text-align:center;
+}
+#ht,#graphic,#cddDesc
+{
+    text-align:center;
+}
+
+#ht
+{
+    font-weight:bold;
+}
+
+#graphic h3 a,#ovrInfo,#showCDD,.psiInp,.defln caption,#grView.hidden,#RSIFrameDesc
+{
+    display:none;
+}
+
+
+#grView.hidden.shown
+{
+    display:block;
+}
+
+.print-log-res { position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden; }
+.print-log-res li { list-style-image: url("images/img_blast_results_gif"); }
+
+#SwitchDesign,#ytb,.fdb,#debug,.moreHsps,.shcl,#cntDesc,#descTblCtrl,.hdnHeader,td.c0,th.c0,.alnMsgS,.alnHdr,.relInf
+{
+    display:none;
+}
+
+h3.cap,#RSIFrameAln,.alnRn span, div.hsp .alnParLinks,.ui-ncbiautocomplete-link-pref,.ui-ncbiautocomplete-link-off
+{
+    display:none;
+}
+
+.alnAll
+{
+    margin-top:0.5emem;
+}
+.dlfRow
+{
+    line-height:1.5em;
+}
+
+span.r label
+{
+    margin-left:0.5em;
+}
+td.l a.deflnDesc
+{
+    font-weight:normal;
+    text-decoration:none;
+    color:inherit;
+}
+    
+table.alnParams
+{
+    width:50em;
+}
+table.alnParams th
+{
+    font-size:100%;    
+}
+
+table.alnParams td
+{
+    font-size:110%;    
+    padding-top:0.5em;
+}
+
+.oneSeqAln
+{
+    border-top:1px solid gery;
+    margin-top:1em;
+    padding-top:1em;
+    width:60em;
+}

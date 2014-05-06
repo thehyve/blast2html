@@ -1,0 +1,1224 @@
+#summary {
+font-size:1.2em;
+}
+#summary {
+margin-top:0pt;
+padding-bottom:1em;
+padding-top:0.5em;
+font-family:Verdana,Arial,Sans-Serif;
+font-size:90%;
+
+}
+#summarylists {
+margin:1em 0pt 0pt;
+overflow:hidden;
+}
+#seealso {
+margin-left:2em;
+}
+#querysummary {
+float:left;
+padding:0pt;
+width:49%;
+}
+#dbsummary {
+margin-left:51%;
+padding:0pt;
+}
+#summary dl {
+margin:0pt 0pt 0.5em;
+padding:0pt;
+}
+#summary dt, #summary dd {
+line-height:1.4em;
+}
+#summary dt {
+float:left;
+font-weight:bold;
+text-align:right;
+width:10em;
+margin-top:0;
+}
+#summary dd {
+margin-left:11em;
+white-space:normal !important;
+overflow:hidden;
+}
+#summary h3 {
+color:#444444;
+font-style:italic;
+margin-bottom:-0.5em;
+margin-top:0pt;
+text-align:center;
+}
+
+#multipleSeqs {
+font-weight: bold;
+}
+#multipleSeqs a {
+font-size:80%;
+font-weight:normal;
+}
+#breadcrumb {
+background:transparent url(images/right-arrow.gif) no-repeat scroll left center;
+font-size:93%;
+font-weight:bold;
+margin-top:-5px;
+padding:0pt 6px 0pt 12px;
+}
+#breadcrumb a {
+color:#336699;
+}
+
+#jobTitle
+{
+color:#669;
+/*color:#2A6980;*/
+font-weight:bold;
+margin-bottom:-0.5em;
+}
+
+#type-a #content-wrap {white-space:normal; padding-bottom:2em;}
+
+#statInfo
+{
+    font-size:100%;
+}
+
+
+#resMsg 
+{
+background-color:#FFFFCC;
+font-size:110%;
+/*margin-top:4em;
+padding-left:0.5em;*/
+text-align:center;
+}
+
+#seealso label
+{
+    display:inline;    
+}    
+
+#seealso a 
+{
+    padding: 0,4px;
+}
+
+a.shown 
+{
+    display:inline;
+}
+
+
+table.dbInfo
+{
+    width:50%;
+    border:solid 1px gray;
+    font-size:100%;
+    border-collapse:collapse; 
+    margin-top:1em;       
+}
+table.dbInfo td,
+table.dbInfo caption 
+{
+   border:solid 1px gray;   
+   padding: 1px 4px;   
+}
+table.dbInfo caption {
+    background-color:#acf;
+    text-align:center;
+    border-bottom:none;
+    margin-bottom:-0.2em;        
+    font-weight:bold;
+    margin-top:1em;
+}
+#resStat, #dbDetails
+{
+    padding-left:25%;
+}
+
+table.dbInfo td
+{
+    text-align:left;
+}
+
+table.dbInfo th {
+visibility:hidden;
+/*padding:0;*/
+}
+
+
+table.dbInfo th div {
+height:0;
+}
+
+table#Kappa pre
+{
+    font-size:120%;
+}
+
+
+/****** Mark new rules ************/
+/* override main.css rules */
+#type-a #content {
+margin: 0 2em;
+}
+
+#type-a h1 {
+font-size: 150%;
+margin-bottom: 1em;
+border-top: solid 1px #ccc;
+}
+
+#type-a h2 {
+font-size: 125%;
+color: #666;
+}
+
+#type-a h3 {
+border: none;
+font-size: 110%;
+}
+#graphic {
+text-align: center;
+margin: auto;
+}
+
+#multipleSeqs label {
+width: 9em;
+height: 1em;
+text-align: right;
+margin-right: 0;
+padding: 0 1em;
+float: left;
+}
+#multipleSeqs select {
+margin-right: 1em;
+font-size: 95%;
+}
+#multipleSeqs input {
+font-size: 95%;
+margin-top: -0.25em;
+margin-right: 1em;
+}
+label.other {
+font-size: 110%;
+font-weight: bold;
+}
+form#results
+{
+    display:none;
+}
+
+#hdLink
+{
+    margin-top:-1.2em;
+    float:right;
+}
+
+#hdTitle
+{
+    margin-left:5em;
+}
+.shownInl
+{
+    display:inline;
+}
+
+#psiHd
+{
+    margin-top:1em;
+}
+
+#phiInfo
+{
+    text-align:center;
+    color:Green;    
+    font-size:110%;
+    margin-top:1em;    
+}
+#ht
+{    
+font-weight:bold;
+margin-bottom:-0.9em;
+margin-top:0.2em;
+text-align:center;
+}
+
+.psiThresh
+{
+    text-align:center;
+    color:Green;
+    font-weight:bold;
+}
+
+#psiThreshA span.shown,#psiThreshB span.shown
+{
+    display:inline;
+}
+
+a.resArr
+{
+    color:#666;
+    font-size:120%;
+    font-weight:bold;    
+}
+
+a.arrowlink.showing 
+{
+    background-image: url(images/down.gif);
+}
+
+#graphic table
+{
+    background-color:White;
+}
+
+#type-a #content
+{
+    background-color:#D3DFF5;
+    border:1px solid #888888;
+    padding:0 0.5em;
+    zoom:1;
+}
+
+.resBox
+{
+    background-color:#eee;
+    margin-right:1em;
+    color:#222;
+    zoom:1;
+}
+
+.resBox1
+{
+    background-color:white;    
+}
+
+#tryNew,.hl
+{
+    color:Red;
+}
+
+/*#tryNew
+{
+    margin-right:20em;
+}*/
+
+
+div#vecSrceen {
+margin-bottom:0pt;
+margin-left:17%;
+margin-top:0pt;
+padding-left:2em;
+white-space:pre;
+width:64%;
+zoom:1;
+}
+
+.psiInp
+{
+    white-space:normal;
+    margin-bottom:1.5em;
+}
+
+.seqlinks label
+{
+    display:inline;
+}
+
+.seqlinks input
+{
+   margin-left:1em;
+}
+.seqlinks a.ln
+{
+   margin-left:2em;
+}
+
+.seqlinks a.lnt
+{
+   margin-left:0.5em;
+}
+
+form.getseq
+{
+    margin:0;
+}
+
+#queryList option.nohits
+{
+    color:Gray;
+}   
+
+#queryList
+{
+    float:left;
+}
+
+p#qb
+{
+    margin-top:0;
+    margin-bottom:0;
+}
+
+#dn
+{
+    margin-left:5em;
+}
+
+#dnf
+{
+    font-size:80%;
+}
+
+/*#FormatForm
+{
+    margin-left:2em;
+}*/
+table.options
+{
+    width:80%;
+    margin-top:0.5em;
+    margin-left:10%;
+    border-collapse:collapse;
+    max-width:70em;
+}
+
+form.resbox label
+{
+    display:inline;
+}
+
+#onPageReformat
+{
+    position:absolute;
+    right:0.5em;    
+    border:none;
+    padding-bottom:1px;
+    bottom:0.1em;
+}
+
+table.dwnl
+{
+    width:60%;
+    margin-left:20%;
+    height:3em;
+}
+table.dwnl td
+{
+    padding-right:0.5em;
+}
+/*
+a#showStat
+{
+    margin-left:-0.4em;
+}
+*/
+a.resArrowLinkB:hover,a.resArrowLinkW:hover {text-decoration: underline;}
+a.resArrowLinkB,a.resArrowLinkW{
+   padding-left: 12px;
+   background-image: url(images/rightSmallArrow.gif);
+   background-repeat: no-repeat;   
+   background-position: center left;
+   -moz-outline-style: none;
+   text-decoration: none;
+   text-decoration: underline;
+}
+a.resArrowLinkB.showing
+{
+   background-image: url(images/downSmallArrow.gif);   
+}
+
+a.resArrowLinkW{
+   background-image: url(images/rightSmallWArrow.gif);   
+}
+
+a.resArrowLinkW.showing 
+{
+    background-image: url(images/downSmallWArrow.gif);
+}
+td.dnl
+{
+    border-left:solid 1px gray;
+}
+.dnLinks a
+{
+    margin-left:1em;
+}
+
+.dnLinks
+{
+    text-align:center;
+}
+#tdal
+{
+    width:30em;
+}
+
+.dnHeader
+{
+    font-size:100%;
+    font-weight:bold;   
+    text-align:center;
+}
+#dnHelp
+{
+    display:inline;
+    position:relative;
+    padding-left:0;
+}
+
+table td.frh
+{
+    background-color:#E0E0E0;
+    color:Gray;
+    text-align:center;    
+}
+
+#type-a h3.tb,#type-a div.tb
+{
+    display:inline;
+    color:Gray;
+    letter-spacing:normal;
+    font-size:120%;
+    font-weight:bold;
+}
+
+#content a.resLink
+{
+	display:inline;
+}
+
+#content a.resLink.hide
+{
+	display:none;
+}
+
+ul.msg li p.info {
+background: transparent url(images/info.png) no-repeat 6px center;
+}
+
+.blRes
+{
+    background-color:White;
+    border:solid 1px #CCCCCC;
+    padding: 1em;
+    margin:1em;
+    /*font-size:110%;*/
+    zoom:1;    
+}
+/* Check this for many results */
+div#content
+{
+    min-width:80em;
+}
+#hitmtImg
+{
+    
+    padding:1em;
+    border:solid 2px gray;
+    padding-bottom:2em;
+}
+#qgr
+{
+    margin-top:-1.8em;
+    /*writing-mode:tb-rl;*/
+}
+#htmb
+{
+    margin-top:-2em;
+    margin-left:11em;
+    border:solid 1px gray;
+}
+
+#hitMatrixView
+{
+    margin-top:1em;
+}
+
+#hitMatrixInfo
+{
+    text-align:center;
+}
+
+#bl2ovrInfo
+{
+    text-align:left;
+}
+
+.newMln
+{
+    height:12px;
+    margin-left:-0.5em;
+}
+
+/***** New staff neew to remove all table#descs from blastRes.css, a.resArr, .psiThresh after formatter upadte *******/
+
+h2.resArr a
+{
+    color:#666;
+    font-size:105%;
+    font-weight:bold;
+    font-family:arial,tahoma,verdana,sans-serif;   
+    white-space:nowrap;
+}
+
+h2.resArr
+{
+    border-bottom:none;
+    letter-spacing:normal; 
+    margin:0;
+    padding:0;
+    width:15%;   
+}
+
+.psiThresh h3
+{
+    text-align:center;
+    color:Green;
+    font-weight:bold;
+}
+
+/*#alignments
+{
+    font-size:115%;
+    font-family:Monospace;
+    white-space:pre;
+    line-height:1;      
+}
+*/
+table.defln 
+{
+font-family: Verdana, Sans-Serif;
+font-size: 80%;
+_font-size: 86%;
+border-collapse: collapse;
+width: 100%;
+border-bottom:1px solid #018AAC;
+}
+
+table.defln caption
+{
+font-weight:bold;
+text-align:left;    
+}
+
+table.hideCap caption
+{
+visibility:hidden;
+height:0;
+font-size:1%;
+}
+
+table.defln th a {
+/*text-decoration: none;*/
+color: #00c;
+}
+
+table.defln th a:visited {
+color: #00c;
+}
+
+table.defln th a:hover {position: relative;
+text-decoration: underline;
+}
+
+table.defln tr th.l,
+table.defln tr td.l {
+text-align: left;
+}
+
+table.defln tr th.sp {
+background-color: #def;
+}
+
+table.defln tr th,
+table.defln tr td {
+text-align: center;
+padding: 1px 4px;
+}
+
+table.defln tr.first th {
+padding-left:18px;
+border-left: solid 1px #A0ceff;
+border-top: solid 1px #A0ceff;
+border-bottom: solid 1px #018aac;
+border-right: solid 1px #018aac;
+border-top: 1px solid #018AAC;
+padding-right: 8px;
+padding-bottom: 3px;
+background-color: #9cf;
+white-space:normal;
+line-height: 1.2em
+}
+
+
+table.defln td {
+border: solid 1px #ccc;
+border-width: 0px 1px;
+white-space:nowrap;
+overflow: hidden;
+}
+
+table.defln tr.first th.sel {
+background: #9cf url(images/up.gif) no-repeat center left;
+padding-left: 18px;
+padding-right: 18px;
+}
+
+table.defln tr:hover {
+/*background-color: #def;*/
+}
+
+/* accessebility styles */
+table.defln.noCaption caption
+{
+    display:none;
+}
+
+
+/* accessebility styles */
+.hdnHeader {
+/*visibility:hidden;*/
+font-size:0;
+height:0;
+}
+
+div.chs
+{
+    margin-bottom: -1em;
+}
+
+.psiInp label
+{
+    display:inline;
+}
+
+h3.tgl
+{
+    letter-spacing:normal;  
+    margin:0;  
+}
+h3.tgl a
+{
+    font-size:80%;
+    color:#222222;
+    font-family:Verdana,Sans-Serif;
+}
+div.tgl
+{
+    margin-top:0;
+    background-color:White;    
+    border:none;
+}
+div.tgl table.defln a
+{
+    font-size:100%;
+}
+
+/************ new alignment styles ************/
+
+.sumN, .aln_frame
+{
+    display: none;
+}
+    
+table.alnParams
+{
+    border:solid 1px #a0a0a0;    
+    border-collapse:collapse; 
+    font-family:Verdana,Arial,Sans-Serif;
+    font-size:87%;
+    width:60%;
+    margin-bottom:1em;
+}
+
+table.alnParams th
+{
+    background-color:#e8e8e8;
+    color:#606060;
+    border:solid 1px #a0a0a0;
+    padding: 1px 4px;    
+    font-size:86%;
+}
+
+table.alnParams td
+{
+   border:solid 1px #a0a0a0;   
+   padding: 1px 4px;
+   white-space:nowrap;      
+}
+
+
+.aln_feat.hidden
+{
+width:0;
+padding:0;
+}
+
+a.sortAlnArrowLinkB
+{
+   padding-left: 12px;
+   background-image: url(images/downSmallArrow.gif);
+   background-repeat: no-repeat;   
+   background-position: center left;
+}
+
+a.sortAlnArrowLinkW
+{
+   padding-left: 12px;
+   background-image: url(images/downSmallWArrow.gif);   
+   background-repeat: no-repeat;   
+   background-position: center left;   
+}
+
+.seqlinks span
+{
+    margin-left:1em;
+}
+
+.alnSortSeq
+{
+	margin-bottom:2em;
+	display:inline;
+}
+
+.alnSortSeq a
+{
+    font-size:90%;    
+}
+table.alnParams a
+{
+    display:block;
+    padding:3px 3px;
+    font-size:90%;
+}
+
+table.alSeqInf td
+{
+vertical-align:top;
+}
+td.alSeq
+{
+padding-left:1em;
+}
+
+td.alSeq.alFirst
+{
+white-space:nowrap;
+padding-left:0;
+}
+
+td.alTitle
+{
+font-size:90%;
+}
+
+img.imn
+{
+/*    width:30px;
+    height:15px;
+*/
+}
+
+img.imc
+{
+    width:15px;
+    height:15px;
+}
+td.l img.hidden
+{
+    display:inline;
+    visibility:hidden;
+}
+
+
+.dflLnk a
+{
+	padding-left:1em;
+	font-size:110%;
+}
+
+table.defln td.dflLnk
+{
+	text-align:left;
+	padding-bottom:0.5em;
+	font-size:11px;
+}
+
+.dflLnk label
+{
+	font-weight:bold;
+	display:inline;
+}
+.oneSeqAln .dflLnk
+{
+font-family: Verdana, Sans-Serif;
+font-size: 80%;
+padding-bottom:1em;
+width:60%;
+}
+
+table.alnDefln tr td.l
+{
+    text-align:left;     
+}
+
+table.alnDefln td
+{
+    /*overflow:hidden;*/
+    white-space:nowrap;    
+    vertical-align:top;
+}
+
+table.alnDefln td.lim
+{
+    white-space:normal;
+    font-size:98%;    
+}
+
+/* check specific browser file */
+table.alnDefln div.lim
+{
+    width:35em;
+}
+
+table.defln tr.dflnAln.shown 
+{
+    display:table-row;
+}
+
+table.alnDefln tr.shown 
+{
+    display:table-row;
+}
+
+.alnDflLn label
+{
+    font-weight:bold;
+    display:inline;
+    font-size:80%;
+    color:#444444;
+    padding-right:3px;
+    padding-left:3px;
+}
+
+.alnDflLn
+{
+    margin-left:2em;
+}
+
+.alnSortSeq.alnDflLn
+{
+    margin-left:0.5em;
+    float:left;
+    position:absolute;
+}
+
+.alnDflLn input
+{
+   margin-left:1em;
+   border:none;
+}
+.alnDflLn label.hidden
+{
+    display:none;
+}
+
+h3.sAlnHdr
+{
+    color:#444444;
+    display:inline;
+    letter-spacing:normal;
+}
+
+h3.sAlnHdr a
+{
+    color:#444444;    
+    text-decoration:none;
+    margin-left:2em;
+    font-size:85%;
+}
+
+.alnHdr
+{
+    padding-top:0.1em;    
+    padding-bottom:0.1em;
+}
+
+.oneSeqAln
+{
+    padding-left:1em;
+    padding-top:0.2em;
+}
+
+table.defln tr.dflnAln td
+{
+    text-align:left;    
+    border:none;
+    background-color:White;
+}
+
+table.defln tr.dflnAln td input.ch,table.defln tr.dflnAln td h3
+{
+    display:none;
+}
+
+
+tr.dflnAln .oneSeqAln
+{
+    font-size:120%;
+}
+
+tr.dflnAln .alnDflLn{
+    
+    margin-left:0;
+}
+
+tr.dflnAln .alnHdr
+{
+   padding:0;   
+}
+
+tr.dflnAln .alnHdr label
+{
+   font-size:90%;
+}
+.hil
+{
+background-color: #def;
+}
+
+
+table.defln tr.odd
+{
+    background-color:#f8f8f8;
+}
+
+table.defln tr.even
+{
+    background-color:#e8e8e8;
+}
+a.dflSeq
+{
+    color:Gray;
+    font-weight:bold;
+    text-decoration:none;
+    padding-left:0;
+    display:inline-block;
+    width:13em;
+}
+a.dflSeq.nogi
+{
+    color:#336699;
+    text-decoration:underline;
+}
+td.lim
+{
+    font-size:13px;
+}
+
+.ldsb
+{
+    padding-left:1em;
+    color:Gray;    
+    font-size:110%;
+}
+
+a.spr
+{
+    padding-right:3px;   
+    border-right:solid 1px; 
+}
+
+
+
+#hlp11
+{
+    width:60%;
+    margin-left:22%;    
+    margin-top:0.5em;
+}
+
+/* jig toggler styles */
+a.resLink.ui-ncbitoggler, a.jtg.ui-ncbitoggler,a.resLink.ui-ncbitoggler-open, a.jtg.ui-ncbitoggler-open
+{
+padding-left:13px;
+color:#336699;
+}
+
+a.resLink.ui-ncbitoggler,a.resLink.ui-ncbitoggler-open
+{
+    font-size:100%;
+}
+
+
+table.options .helplink
+{
+    font-size:100%;
+    display:inline;
+}
+
+
+span.ui-icon.ui-icon-triangle-1-e,span.ui-icon.ui-icon-triangle-1-s
+{
+   padding-left: 12px;
+   background-repeat: no-repeat;      
+   -moz-outline-style: none;   
+   text-decoration: underline;
+   /*height:18px;
+   width:20px;   */
+}
+
+
+
+span.ui-icon.ui-icon-triangle-1-e
+{   
+   background-image: url(images/rightSmallArrow.gif);
+}
+
+span.ui-icon.ui-icon-triangle-1-s
+{
+    background-position: center left;
+    background-image: url(images/downSmallArrow.gif); 
+}
+
+table.dbInfo.shown
+{
+    display:table;
+}
+
+#seealso a.hidden
+{
+    display:none;
+}
+
+#seealso a, #seealso a.hidden.shown
+{
+    display:inline-block;
+}
+
+
+a.ui-ncbitoggler.hidden.shown.jtg, a.ui-ncbitoggler-open.hidden.shown.jtg 
+{
+    display:inline;
+}
+/**Comment those line to display ncbi-toggler native icon - begin *
+a.ui-ncbitoggler span.ui-icon-plus-minus-big, a.ui-ncbitoggler-open span.ui-icon-plus-minus-big-open 
+{
+   padding-left: 16px;
+   background-image: url(images/down.gif);
+   background-repeat: no-repeat;   
+   background-position: center left;
+   -moz-outline-style: none;
+   text-decoration: none;
+   text-decoration: underline;
+}
+
+a.ui-ncbitoggler span.ui-icon-plus-minus-big
+{   
+   background-image: url(images/right.gif);
+}
+
+a.ui-ncbitoggler-open span.ui-icon-plus-minus-big-open
+{
+     background-image: url(images/down.gif);
+}
+*Comment those line to diplay ncbi-toggler native icon - end **/
+
+a.ui-ncbitoggler span.ui-icon-plus-minus-big, a.ui-ncbitoggler-open span.ui-icon-plus-minus-big-open {  
+  background-image: url("images/ncbitoggler-plus-minus-big.gif");
+}
+a.helplink{display:inline}
+#summary .ui-widget
+{
+font-family:Verdana,Arial,Sans-Serif  !important;
+font-size:100%;
+}
+.resBox.ui-widget,.resbox.ui-widget
+{
+    font-size:100%;
+}
+
+.resetAll
+{
+    position:absolute;
+    padding:0;    
+    right:0;
+    margin-right:5em;    
+}
+
+#nft
+{
+    padding-right:1em;
+    vertical-align:baseline;
+}
+#advView
+{
+    margin-left:3em;
+}
+#SwitchDesign, a.fdb
+{
+    color:Red;     
+}
+a.fdb
+{
+    margin-top: -1.5em;
+    float:right;
+    margin-right:5%;    
+}
+#SwitchDesign
+{
+    left:50em;
+    right:10em;
+    position:absolute;
+    white-space:nowrap;
+}
+
+
+#brFtp
+{    
+    margin-left:1em; 
+}
+
+#hnr 
+{
+    float:right;
+}
+
+#topLinks
+{
+    float:left;
+}
+#topLinksLeft
+{
+    float:right;
+}
+
+#summary h1
+{
+    border-top:none;
+}
+
+#dbPlusSpecies > div {
+  width: 50%;
+  margin-top:0.5em;
+  padding-bottom:0.1em;
+}
+
+#nextDbSet,#lastDbSet {
+  float: right;
+}
+#prevDbSet,#lastDbSet {
+  padding-left:0.5em;
+}
+#dbSpecies,#dbSpecies caption 
+{
+    margin-top:auto;
+}
+.cpAdd
+{
+    font-size:80%;
+}

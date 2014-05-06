@@ -1,0 +1,262 @@
+a#refPage
+{
+	margin-left:3em;	
+}
+
+a.resLink
+{
+	margin-left:1em;
+	display:none;
+}
+
+a.resLinkhidden 
+{
+	display:none;
+}
+
+
+#cddResults
+{
+	float:right;
+	margin-top:-2em;
+	margin-right:1em;
+	color:#336699;
+    font-size:100%;
+}
+
+#cddResults.showing { 
+   background-image: url(images/down.gif);   
+}
+
+
+
+div.inlineDiv
+{
+	display:inline;
+}	
+
+span.reslink
+{
+	display:none;
+}
+
+div.statPage *.statPage,
+div.resPage *.resPage
+{
+	display:inline;
+}
+
+div.resHeader *.hidden 
+{
+	display:none;
+}
+
+#cddInfo 
+{
+    text-align:center;
+}
+#cddDesc 
+{
+    font-weight:bold;
+}
+div#desctbl 
+{
+border: solid 1px #018aac;
+/*min-width: 1000px;*/
+margin: none;
+width: 100%;
+background-color:White;
+/*line-height:0;
+_line-height:0;*/
+}
+
+table#descs 
+{
+font-family: Verdana, Sans-Serif;
+font-size: 90%;
+_font-size: 86%;
+border-collapse: collapse;
+/*min-width: 600px;*/
+width: 100%;
+}
+
+table#descs th a {
+text-decoration: none;
+color: #00c;
+}
+
+table#descs th a:visited {
+color: #00c;
+}
+
+table#descs th a:hover {position: relative;
+text-decoration: underline;
+}
+
+table#descs tr th.l,
+table#descs tr td.l {
+text-align: left;
+}
+
+table#descs tr th.sp {
+background-color: #def;
+}
+
+table#descs tr th,
+table#descs tr td {
+text-align: center;
+padding: 1px 4px;
+}
+
+table#descs tr.first th {
+padding-left:18px;
+border-left: solid 1px #A0ceff;
+border-top: solid 1px #A0ceff;
+border-bottom: solid 1px #018aac;
+border-right: solid 1px #018aac;
+padding-right: 8px;
+/*background-color: #01d5ff;*/
+background-color: #9cf;
+/*font-size: 92%;*/
+white-space:normal;
+line-height: 1.2em
+}
+
+
+table#descs td {
+border: solid 1px #ccc;
+border-width: 0px 1px;
+white-space:nowrap;
+overflow: hidden;
+}
+
+.slink {
+font-size: 90%;
+font-weight: normal;
+}
+
+table#descs tr.first th.sel {
+background: #9cf url(images/up.gif) no-repeat center left;
+padding-left: 18px;
+padding-right: 18px;
+}
+
+div.lim 
+{    
+/*overflow: hidden;-this used to work in Firefox 2- comment for now and set the width */
+width: 35em;
+display: inline-block;
+height: 1.3em;
+}
+
+table#descs tr:hover {
+background-color: #def;
+}
+
+pre 
+{
+	font-size:110%;
+	_font-size:100%;	
+	line-height:1;
+}
+
+#msg 
+{
+    white-space:normal;
+    border-color:#cccccc;
+    padding:0;
+    margin: 0;   
+    margin-top:2px; 
+}
+#msg li 
+{
+    display:none;
+    padding:0;
+    margin: 0;
+    text-indent: 0;
+}
+#msg li.warning, #msg li.error ,#msg li.info 
+{
+    display:block;
+} 
+
+#msg ul
+{
+    margin:0;    
+    padding:0;    
+} 
+
+table#statInfo
+{
+    border: solid 1px #ccc;
+    background-color: #eee;
+    width: 100%;    
+}
+
+table#statInfo tr.odd {
+background-color: #e0e0e0;
+}
+
+.READY, .UNKNOWN 
+{
+    display:none;
+}
+
+p.WAITING 
+{
+    margin-top:1em;
+}
+
+#frmPage
+{
+	margin-left:1em;
+}
+
+span.Gene_PubMedLinks
+{
+    color: Green; font-weight: bold;
+}
+
+ul.msg li p
+{
+    display:none;
+}
+
+.msg li p.warning, .msg li p.error, .msg li p.success,.msg li p.info  
+{
+    display:block;
+} 
+
+.mdlbox
+{
+    white-space:pre;
+    background-color:Transparent;
+    border:none;
+}
+
+#blastErr
+{
+    white-space:normal;
+}
+
+
+
+#RSIFrameNoRes,#RSIFrameDesc,#RSIFrameAln
+{
+    border:none;
+    width:519px;
+    height:35px;    
+    margin:0px auto;
+}
+
+
+a.ui-ncbitoggler.hidden, a.ui-ncbitoggler-open.hidden
+{
+    display:none;
+}
+
+.smn {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
