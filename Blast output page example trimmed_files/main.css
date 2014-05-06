@@ -1,0 +1,337 @@
+/*
+LEGAL
+=====
+Copyright: Daemon Pty Limited 1995-2006, http://www.daemon.com.au & http://www.mollio.org/
+License: Released Under the "Common Public License 1.0", http://www.opensource.org/licenses/cpl.php
+Version: 010306
+*/
+body {padding: 0 0 10px;background: #fff url("images/body_bg-ncbi.gif") repeat-x 0 100%;color:#333;font:83%/1.5 arial,tahoma,verdana,sans-serif;}
+body { margin: 0; padding: 0; } 
+/* LINKS */
+a,a:link,a:link,a:link,a:hover {text-decoration:underline;cursor:pointer}
+a:link {color:#369} 
+/* Original: a:visited {color:#999} */
+a:visited {color:#664E99;}
+a:hover,a:active {color:#069}
+/* FORMS */
+form {margin: 0 0 1.5em}
+input {font-family: arial,tahoma,verdana,sans-serif;margin: 2px 0 0}
+label {display:block;padding: 5px 0}
+label br {clear:left}
+#desc {font-weight: bold;margin-bottom: 5px;}
+#desc a {font-weight: normal;}
+#logolink, #logolink img {float: left;border: 0;margin: 0;}
+      
+/* TYPOGRAPHY */
+p, ul, ol {margin: 0 0 1.5em}
+/* Original: h1, h2, h3, h4, h5, h6 {letter-spacing: -1px;font-family: arial,verdana,sans-serif;margin: 1.2em 0 .3em;color:#000;border-bottom: 1px solid #eee;padding-bottom: .1em}*/
+h1, h2, h3, h4, h5, h6 { letter-spacing: -1px;font-family: arial,verdana,sans-serif;margin: 1.2em 0 .3em;color:#2A6979;border-bottom: 1px solid #ccc;padding-bottom: .1em}
+h1 {font-size: 196%;margin-top:.6em}
+h2 {font-size: 136%}
+h3 {font-size: 126%}
+h4 {font-size: 116%}
+h5 {font-size: 106%}
+h6 {font-size: 96%}
+.highlight {color:#4E8999; padding: 3px; border: solid 1px #ccc;}
+.featured { background-color: #ffc; padding: 0.25em 0.5em;margin:0; }
+.subdued {color:#999}
+
+small {font-size:11px}
+
+/* LISTS */
+ul {margin: .3em 0 1.5em 0;list-style-type:none}
+ul.related {margin-top: -1em}
+ol {margin: .5em .5em 1.5em}
+ol li {margin-left: 1.4em;padding-left: 0;background: none; list-style-type: decimal}
+.section li {line-height: 1.4em;padding-left: 25px;background: transparent url("images/sprites-ncbi.gif") no-repeat 0 0}*/
+li.doc {background-position: 3px -500px}
+ul.nomarker li {background:none;padding-left:0}
+dl {margin: 0 0 1em 0}
+dt {font-weight:bold;margin-top: 1.3em}
+dl dl {margin: 0 0 1.5em 30px}
+
+/* GENERAL */
+/*img {border:none} */
+hr {margin: 1em 0;background:#f2f2f2;height:1px;color:#f2f2f2;border:none;clear:both}
+.clear {clear:both;position:relative;font-size:0px;height:0px;line-height:0px} 
+/* LAYOUT - HEADER */
+#header {background: #204174  url("images/sprites-ncbi.gif") repeat-x 0 100%;margin: 0 0 3px;padding: 0 0 8px;white-space:nowrap;}
+#header #site-name {font: 120% arial;letter-spacing: -.05em;margin: 0 ;padding:3px 0; color:#ffffff;font-weight: bold;}
+#header #site-name h1 {font-style: italic; letter-spacing: 0; color: #68a; margin:0 0 0 5em; position: relative; left: 200px;font-size:85%;border:none;padding-bottom:0;display:inline;}
+#header {min-width:770px;position:relative;}
+/* NAV - top horizontal nav */
+#nav, #nav ul {padding: 0;margin: 0;list-style: none}
+#nav {font-weight:bold;height:2.09em;font: bold 95% arial;margin: 0 105px 0 40px; width: 430px;}	
+#nav li {background: #999;float: left;width: auto;display:block;margin: 0;border-bottom: 3px solid #666;border-right: 3px solid #252525;padding:0}
+#nav a, #nav a:link, #nav a:visited, #nav a:hover, #nav a:active {text-decoration:none;cursor:pointer;color:#fff;display: block;padding: 4px 10px 2px}
+#nav a:hover {color:#000}
+#nav li ul {border-left: 1px solid #ccc;background: #eee;width:22.8em;font-size:90%;margin-top:3px;position: absolute;font-weight:normal;left: -999em}
+#nav li:hover ul, #nav li.sfhover ul {left: 0;z-index:99999;}
+#nav li li {background:none;float:none;border:none;border: 1px solid #999;border-top:1px solid #fff;border-right:solid 1px #ccc;border-left:none;padding-left:0}
+#nav li li.last {border-bottom:solid 1px #ccc;}
+#nav li li a, #nav li li a:link, #nav li li a:visited, #nav li li a:hover {color:#000;padding: 3px 10px 2px;width:21em}
+#nav li li a:hover {color:#fff;background:#4E8999}
+#nav li.active {background: #4E8999;border-bottom: 3px solid #4E8999}
+#nav li.active a:link, #nav li.active a:visited, #nav li.active a:hover, #nav li.active a:active {}
+#nav li.active a:hover {color:#000}
+#nav li.active li {border:none;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+#nav li.active li {border: solid 1px #ccc;border-right: solid 1px #4E8999;border-left: solid 1px #4E8999;}
+#nav li.active li.last {border-bottom: solid 1px #4E8999;}
+#nav li.active li a:link, #nav li.active li a:visited, #nav li.active li a:hover, #nav li.active li a:active {color:#000}
+#nav li.active li a:hover {background: #666 url("images/sprites-ncbi.gif") repeat-x 0 99%;color:#fff; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/sprites-ncbi.gif', sizingMethod='crop');}
+#nav li.active li.active a:link, #nav li.active li.active a:visited, #nav li.active li.active a:hover, #nav li.active li.active a:active {color:#fff;font-weight:bold;background: #666 url("images/sprites-ncbi.gif") repeat-x 0 99%; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/sprites-ncbi.gif', sizingMethod='crop');}
+
+/* hide from IE mac \*/
+#nav li {width:auto}
+/* end hiding from IE5 mac */
+	
+/* SEARCH */
+#search {color:#fff;font-weight:bold;position:absolute;top:10px;right:4em}
+#search form {margin:0}
+#search input {width:8em;margin: 0 0 -1px;height:1.2em}
+#search label {padding:5px 0 0;display:inline}
+#search input.f-submit {width:auto;font-size:81%;margin:0 0 -.15em;height:1.95em}
+#content {margin: 0;}
+#type-d #content {margin: 0 0 0 40px;}
+#breadcrumb {margin-top:-5px;font-size:93%;font-weight:bold; margin-left: 1em; margin-bottom: 0; padding: 0 6px 0 12px;; background: url("images/right-arrow.gif") no-repeat center left;display:inline;}
+#breadcrumb strong{font-weight:bold;}
+#breadcrumb a:link, #breadcrumb a:visited {text-decoration:none}
+#breadcrumb a:hover, #breadcrumb a:active {text-decoration:underline}
+/* CODE - formatting for code inserted into body - more here: http://dizque.lacalabaza.net/temp/lipt/ */
+ol.code {font-family: monospace;position:relative}
+ol.code li {color: #666;margin-bottom: 1px}
+ol.code code {color: #000;display: block}
+ol.code .cmt {color: #4077d2}
+li.tab0 code {padding-left: 4em}
+li.tab1 code {padding-left: 8em}
+li.tab2 code {padding-left: 12em}
+li.tab3 code {padding-left: 16em}
+li.tab4 code {padding-left: 20em}
+li.tab5 code {padding-left: 24em}
+ol.code li  {background: #f3f3f3}
+p.note {margin: 1em;border: 1px solid #ddd;background: #f0f0f0;padding: 1em}
+
+/* LAYOUT TYPE A */
+#type-a #content-wrap { width: 100%; margin: 0; padding: 0; white-space:nowrap;margin-top:-0.3em;}
+#type-a #content { margin: 0 40px; }
+/* LAYOUT - FOOTER */
+#footer p {margin:0; padding: 0;padding-bottom:1.5em;}
+
+#footer a:link {color:#999}
+#footer {clear:both;border-top: 1px solid #E3E8EE;padding: 4px 10px 0 10px;font-size:86%;color:#999; margin: 0;}
+#breadcrumb a.help {margin-left: 1em;font-weight:normal;text-decoration: underline;}
+div#search {border: solid 1px #aaa;}
+div#search td{padding: 1px;}
+/* Mozilla-only rule */
+html > body div#search td{padding: 2px;font-weight: bold;font-size: 80%;}
+div#search {background-color: white;position: absolute;right: 4px;top: 4px;color: #369; /* new rule: text by default is white */}
+#jtitle{margin-left:1em;}
+.hidden {display: none;}
+.shown {display: block;}
+a#moreHelp {font-weight:bold;text-decoration:underline;font-size:80%;padding-left:5px;background:none;}
+/* These next two rules replace the text of <a class="helplink"><span>[?]</span></a>
+ * with a 16x16 help link image with transparent background
+ */
+.helpbox, .resBox {font-size: 95%;color: #666;border: solid 1px #ccc;background-color: #def;margin-left: 1em;padding: 0.5em;margin-bottom: 0.5em;zoom:1;}
+.help, .helpbox, .resBox {font-size: 95%;color: #666;white-space:normal;}
+.helplink {padding-left: 16px;background:transparent url(images/help.gif) center left no-repeat;list-style: none;}
+.helplink span {visibility: hidden;}
+a.helplink {text-decoration: none;}
+.helpbox a {background:none;text-decoration:underline;font-size:90%;}
+a.arrowlink:hover {text-decoration: underline;}
+a.arrowlink{
+   padding-left: 16px;
+   background-image: url(images/right.gif);
+   background-repeat: no-repeat;   
+   background-position: center left;
+   -moz-outline-style: none;
+   text-decoration: none;
+   text-decoration: underline;
+}
+
+#orgns {float: right;}
+
+ul.msg, ul.msg li {
+padding:0;
+text-indent:0;
+margin: 0;
+}
+
+ul.msg {
+margin-top: 1em;
+}
+
+ul.msg li {
+margin-bottom: 3px;
+display: none;
+font-weight: bold;
+background: transparent url(images/gradient30down.png) repeat-x top left;
+}
+/* IE6 doesn't have alpha transparency, so hack it out */
+* html ul.msg li {
+background-image: none;
+}
+
+ul.msg li p, ul.msg li div.msInf  {
+padding: 3px;
+padding-left: 28px;
+margin:0;
+white-space:normal;
+}
+
+ul.msg li a.small { 
+font-weight: normal;
+font-size: 90%;
+}
+
+ul.msg li.error {
+background-color: #fbb;
+border: solid 1px #c00;
+color: #c00;
+}
+
+ul.msg li.error p, ul.msg li.error div.msInf{
+background: transparent url(images/error.png) no-repeat 6px center;
+}
+
+ul.msg li.warning {
+background-color: #ffc;
+border: solid 1px #cc0;
+color: #444;
+}
+
+ul.msg li.warning p, ul.msg li.warning div.msInf {
+background: transparent url(images/warn.png) no-repeat 6px center;
+}
+
+ul.msg li.success {
+background-color: #dfd;
+border: solid 1px #0d0;
+color: #060;
+}
+
+ul.msg li.success p,ul.msg li.success div.msInf {
+background: transparent url(images/ok.png) no-repeat 6px center;
+}
+
+ul.msg li.info {
+background-color: #ace;
+color: #444;
+border: solid 1px #369;
+padding: 1px;
+}
+
+ul.msg li.info p,ul.msg li.info div.msInf {
+background: transparent url(images/info.png) no-repeat 6px center;
+}
+
+ul.msg li.warning,ul.msg li.error,ul.msg li.success,ul.msg li.info 
+{
+    display:block;
+}
+ul.msg li p
+{
+    display:block;
+}
+
+ul.msg li.error p.warning {
+background: transparent url(images/warn.png) no-repeat 6px center;
+}
+
+ul.msg li .helpbox 
+{
+    font-weight:normal;
+    margin-left:0;
+}
+
+a.errorHelp
+{
+/*float:right;
+margin-right:2em;
+margin-top:-2em;*/
+margin-left:0.5em;
+}
+
+.msInf a.shown
+{
+    display:inline;
+}
+
+#tryNew
+{
+    color:Red;
+}
+.orgHint
+{
+    color:#AAAAAA;
+}
+
+
+span.acPromt,.skp
+{
+    position:absolute;
+    left:-9999px;
+}
+
+
+    
+#rgs
+{
+    margin-left:35em;    
+    white-space:nowrap;
+}
+
+#trdm
+{
+    vertical-align:super;
+    font-size:small;
+}
+
+.print-log-res { position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden; }
+.print-log-res li { list-style-image: none; }
+
+/* jig toggler adjustments */
+#content .ui-ncbitoggler.ui-widget, #content a.ui-ncbitoggler-open, #content  a.ui-ncbitoggler-slave-open
+{
+    font-size:100%;
+}
+
+.helplink.ui-widget
+{
+  display:inline;
+}
+
+
+#content a.ui-ncbitoggler.ui-widget, #content a.ui-ncbitoggler-open
+{    
+color:#336699;
+}
+
+#moreHelp span 
+{
+    visibility:visible;    
+}
+
+
+#content #moreHelp.ui-ncbitoggler, #content #moreHelp.ui-ncbitoggler-open
+{
+    font-size:80%;
+}
+
+#content  .ui-ncbitoggler-slave-open
+{
+    line-height:1.4em;
+}
+
+div.ui-ncbiautocomplete-holder { 
+  font-size: 80%;  
+}
+ul.ui-ncbiautocomplete-options li span{ color: red;}
+.ytb,.section a.ytb
+{
+    margin-bottom:-5px;
+    background: url("/core/assets/guide/images/YouTube.png") no-repeat scroll left center transparent !important;
+    height:22px;   
+    padding-left:55px;
+    font-weight:normal;
+}
