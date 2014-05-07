@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    
+    <title>Blast output</title>
+
+    <style>
+      body {
+      color: #33333;
+      font-family: Verdana,Arial,Sans-Serif;
+      }
+
+      
+      #content {
+      margin: 0 2em;
+      padding: 0.5em;
+      border: 1px solid #888888;
+      background-color: #d3dff5;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+      color: #2A6979;
+      font-family: arial,verdana,sans-serif;
+      letter-spacing: -1px;
+      margin: 1.2em 0 0.3em;
+      }
+
+      h1 {
+      border-bottom: 1px solid #CCCCCC;
+      font-size: 150%;
+      padding-bottom: 0.1em;
+      }
+
+      h2 {
+      font-size: 120%;
+      font-weight: bold;
+      }
+
+      h4.graphicHeader {
+      color: black;
+      letter-spacing: 0;
+      font-style: bold;
+      }
+
+      .headerdata {
+      font-size: 90%;
+      }
+      .headerdata .param {
+      font-weight: bold;
+      text-align: right;
+      padding: 0 1em;
+      }
+
+      .graphicInfo {
+      background-color: #eeeeee;
+      border: 1px solid #cccccc;
+      padding: 1em;
+      text-align: center;
+      }
+
+      .graphic {
+      background-color: white;
+      border: 2px solid black;
+      padding: .5em;
+      align: center;
+      margin: auto;
+      }
+
+      .centered {
+      align: center;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      table.legend {
+      color: white;
+      font-weight: bold;
+      align: center;
+      margin: 0 auto;
+      width: 40em;
+      border-spacing: 0;
+      }
+      table.legend td {
+      width: 20%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      }
+
+      table.matchresult {
+      height: 5px;
+      width: 40em;
+      align: center;
+      margin: 5px auto;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div id=content>
+      <h1>Nucleotide Sequence ({{blast["BlastOutput_query-len"]}} letters)</h1>
+
+      <div id=header>
+
+	<table class=headerdata>
+	  {% for param, value in params %}
+   	    <tr><td class=param>{{param}}</td><td>{{value}}</td></tr>
+	  {% endfor %}
+	</table>
+	  
+      </div>
+
+      <div id=graphics>
+	<h2>Graphic Summary</h2>
+
+	<div class=graphicInfo>
+	  <h3 class=centered>Distribution of {{hits|length}} Blast Hits on the Query Sequence</h3>
+	  <div class=graphic>
+	    <h4 class=graphicHeader>Color key for alignment scores</h4>
+	    <table class=legend><tr>
+		<td style="background-color: {{colors[0]}}">&lt;40</td>
+		<td style="background-color: {{colors[1]}}">40-50</td>
+		<td style="background-color: {{colors[2]}}">50-80</td>
+		<td style="background-color: {{colors[3]}}">80-200</td>
+		<td style="background-color: {{colors[4]}}">&gt;=200</td>
+	    </tr></table>
+
+	    {% for line in match_colors %}
+	    <table class=matchresult><tr>
+		{% for match in line.colors %}
+		<td width={{match[0]}} style="background-color: {{match[1]}}">&nbsp</td>
+		{% endfor %}
+	    </tr></table>
+	    {% endfor %}
+	    
+	    <p>hoi</p>
+
+	  </div>
+	</div>
+
+
+      </div>
+
+    </div>
+  </body>
+</html>
+
