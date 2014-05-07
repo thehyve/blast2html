@@ -92,7 +92,17 @@
       height: 5px;
       width: 40em;
       align: center;
-      margin: 5px auto;
+      margin: 4px auto 0 auto;
+      }
+      table.matchresult tr {
+      height: 5px;
+      }
+      table.matchresult td {
+      height: 5px;
+      }
+      a.matchlink {
+      display: block;
+      heigth: 5px;
       }
     </style>
 
@@ -128,11 +138,13 @@
 	    </tr></table>
 
 	    {% for line in match_colors %}
-	    <table class=matchresult><tr>
-		{% for match in line.colors %}
-		<td width={{match[0]}} style="background-color: {{match[1]}}">&nbsp</td>
-		{% endfor %}
-	    </tr></table>
+	    <a href={{line.link}}>
+	      <table class=matchresult><tr>
+		  {% for match in line.colors %}
+		  <td style="background-color: {{match[1]}}; width: {{match[0]}}px" />
+		  {% endfor %}
+	      </tr></table>
+	    </a>
 	    {% endfor %}
 	    
 	    <p>hoi</p>
