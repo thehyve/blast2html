@@ -172,9 +172,8 @@
       white-space: nowrap;
       }
       table.descriptiontable td div {
-      display: inline-block;
-      overflow: hidden;
-      max-height: 1.4em;
+      width: 1em;
+      overflow: visible;
       white-space: nowrap;
       }
 
@@ -257,6 +256,7 @@
         <div class=grey><div class=white>
             <h4 class=blackHeader>Sequences producing significant alignments:</h4>
             <table class=descriptiontable>
+	      <col/><col/><col/><col/><col/><col/><col/>
               <tr>
                 <th>Description</th>
                 <th>Max score</th>
@@ -268,7 +268,7 @@
               </tr>
               {% for hit in hit_info %}
               <tr>
-                <td><div>{{hit.description}}</div></td>
+                <td style="width: 100%"><div>{{hit.description}}</div></td>
                 <td>{{hit.maxscore}}</td>
                 <td>{{hit.totalscore}}</td>
                 <td>{{hit.cover}}</td>
