@@ -63,6 +63,15 @@
       padding: 1em;
       }
 
+      .graphicrow {
+      clear: left;
+      width: 100%;
+      }
+
+      .graphicitem {
+      float: left;
+      }
+
       .graphic {
       background-color: white;
       border: 2px solid black;
@@ -75,7 +84,7 @@
       text-align: center;
       }
 
-      .centered, #defline, div.legendwrapper, table.legend, div.tablewrapper {
+      .centered, #defline, div.legend, div.tablewrapper {
       align: center;
       margin-left: auto;
       margin-right: auto;
@@ -93,17 +102,16 @@
       overflow-y: hidden;
       }
 
-      div.legendwrapper {
+      div.legend {
       max-width: 40em;
       }
-      
-      table.legend {
+      div.legend div {
+      width: 100%;
       color: white;
       font-weight: bold;
-      width: 100%;
       border-spacing: 0;
       }
-      table.legend td {
+      div.legend div .graphicitem {
       width: 20%;
       padding: 0;
       margin: 0;
@@ -132,40 +140,28 @@
       color: red;
       text-align: left;
       }
-      .scale table {
-      width: 100%;
-      height: 1.3em;
-      margin-top: 0;
+      .scale .graphicrow {
+      margin: .5em 0 .5em 0;
       color: white;
-      table-layout: fixed;
-      border-collapse: collapse;
       }
-      .scale td {
-      margin 0;
-      padding 0;
-      }
-      .scale td div {
-      margin: 1px 0;
+      .scale .graphicitem div {
+      margin: 0 1px;
+      padding: 0 2px;
       text-align: right;
       background-color: red;
       color: white;
       }
-      
-      table.matchresult {
-      width: 100%;
-      margin-top: 3px;
-      margin-bottom: 0;
-      border-collapse: collapse;
-      }
-      table.matchresult, table.matchresult tr, table.matchresult td, a.matchlink {
-      height: 3px;
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0;
-      }
-      a.matchlink {
+
+      a.matchresult {
       display: block;
+      margin: 0;
+      padding: 0;
+      }
+      div.matchrow {
+      margin-top: 4px;
+      }
+      div.matchrow, div.matchitem {
+      height: 4px;
       }
 
       table.descriptiontable {
@@ -211,35 +207,42 @@
 
           <div class=graphic>
             <h4 class=blackHeader>Color key for alignment scores</h4>
-            <div class=legendwrapper><table class=legend><tr>
-                  <td style="background-color: {{colors[0]}}">&lt;40</td>
-                  <td style="background-color: {{colors[1]}}">40-50</td>
-                  <td style="background-color: {{colors[2]}}">50-80</td>
-                  <td style="background-color: {{colors[3]}}">80-200</td>
-                  <td style="background-color: {{colors[4]}}">200&le;</td>
-            </tr></table></div>
+	    <div class=legend><div class=graphicrow>
+		<div class=graphicitem style="background-color: {{colors[0]}}">&lt;40</div>
+		<div class=graphicitem style="background-color: {{colors[1]}}">40-50</div>
+		<div class=graphicitem style="background-color: {{colors[2]}}">50-80</div>
+		<div class=graphicitem style="background-color: {{colors[3]}}">80-200</div>
+		<div class=graphicitem style="background-color: {{colors[4]}}">200&le;</div>
+            </div></div>
+	    <div style="clear: left"></div>
 
             <div class=tablewrapper>
 
               <div class=scale>
                 <div>query:</div>
-                <table><tr>
+		<div class=graphicrow>
                     {% for s in queryscale %}
-                    <td width={{s.width|safe}}%><div>{{s.label|safe}}</div></td>
+                    <div class=graphicitem
+			 style="width: {{s.width|safe}}%">
+		      <div style="{{'margin-left: 0px' if loop.first else 'margin-right: 0px' if loop.last}}">{{s.label|safe}}</div>
+		    </div>
                     {% endfor %}
-                </tr></table>
+		</div>
+		<div style="clear: left"></div>
               </div>
               
               {% for line in match_colors %}
-              <a href="{{line.link}}"
+              <a class=matchresult
+		 href="{{line.link}}"
                  onmouseover='document.getElementById("defline").innerHTML="{{line.defline}}"'
                  onmouseout='document.getElementById("defline").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
                  title="{{line.defline}}">
-                <table class=matchresult><tr>
+                <div class="matchrow graphicrow">
                     {% for match in line.colors %}
-                    <td width={{match[0]}}% style="background-color: {{match[1]}}" />
+                    <div class="matchitem graphicitem"
+			 style="background-color: {{match[1]}}; width: {{match[0]}}%"></div>
                     {% endfor %}
-                </tr></table>
+                </div>
               </a>
               
               {% endfor %}
