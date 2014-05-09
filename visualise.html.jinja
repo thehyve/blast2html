@@ -60,7 +60,7 @@
       .white {
       background-color: white;
       border: 1px solid #cccccc;
-      padding: 1em;
+      padding: 1.5em 2%;
       }
 
       .graphicrow {
@@ -98,7 +98,7 @@
       padding-right: .2em;
       max-width: 50em;
       text-align: left;
-      height: 4em;
+      height: 2.8em;
       overflow-y: hidden;
       }
 
@@ -151,6 +151,12 @@
       background-color: red;
       color: white;
       }
+      .scale .graphicitem:first-child div {
+      margin-left: 0px;
+      }
+      .scale .graphicitem:last-child div {
+      margin-right: 0px;
+      }
 
       a.matchresult {
       display: block;
@@ -164,22 +170,55 @@
       height: 4px;
       }
 
+      div#descriptions {
+      }
+      
       table.descriptiontable {
+      font-size: 85%;
+      border: 1px solid #97b0c8;
+      border-spacing: 0;
+      color: #222222;
+      line-height: 1.3em;
+      background-color: white;
+      }
+      table.descriptiontable col:first-child {
       width: 100%;
+      }
+      table.descriptiontable tr:hover {
+      background-color: #D5DEE3;
+      }
+      table.descriptiontable th {
+      background-color: #F0F0F0;
+      background: linear-gradient(#FFFFFF, #F0F0F0);
+      border-bottom: 1px solid #D4DFE9;
+      border-right: 1px solid #CFCFCF;
+      border-left: 0px solid black;
+      border-top: 0px solid black;
       }
       table.descriptiontable td {
       overflow: hidden;
-      white-space: nowrap;
+      text-align: center;
+      padding: .4em .8em;
       }
       table.descriptiontable td div {
       width: 1em;
       overflow: visible;
       white-space: nowrap;
+      text-align: left;
       }
 
     </style>
 
-    
+    <script type="text/javascript">
+      function toggle_visibility(id) {
+	 var e = document.getElementById(id);
+	 if(e.style.display == 'none')
+	    e.style.display = 'block';
+	 else
+	    e.style.display = 'none';
+      }
+    </script>
+
   </head>
 
   <body>
@@ -223,7 +262,7 @@
                     {% for s in queryscale %}
                     <div class=graphicitem
 			 style="width: {{s.width|safe}}%">
-		      <div style="{{'margin-left: 0px' if loop.first else 'margin-right: 0px' if loop.last}}">{{s.label|safe}}</div>
+		      <div>{{s.label|safe}}</div>
 		    </div>
                     {% endfor %}
 		</div>
@@ -250,11 +289,14 @@
         </div>
       </div>
 
+
+      
       <div id=descriptions>
         <h2>Descriptions</h2>
 
         <div class=grey><div class=white>
             <h4 class=blackHeader>Sequences producing significant alignments:</h4>
+
             <table class=descriptiontable>
 	      <col/><col/><col/><col/><col/><col/><col/>
               <tr>
@@ -268,7 +310,11 @@
               </tr>
               {% for hit in hit_info %}
               <tr>
-                <td style="width: 100%"><div>{{hit.description}}</div></td>
+                <td><div><a href="#hit{{hit.link_id}}"
+			    title="{{hit.title}}"
+			    name=description{{hit.link_id}}>
+		      {{hit.title}}
+		</a></div></td>
                 <td>{{hit.maxscore}}</td>
                 <td>{{hit.totalscore}}</td>
                 <td>{{hit.cover}}</td>
@@ -280,7 +326,78 @@
             </table>
             
         </div></div>
+      </div>
 
+
+      
+      <div id=alignments>
+	<h2>Alignments</h2>
+	
+	<div class=grey><div class=white>
+	    {% for hit in hits %}
+	    <div class=alignment id=hit{{hit.Hit_num}}>
+	      
+	      <div class=linkheader>
+		<a href="#description{{hit.Hit_num}}">Descriptions</a>
+	      </div>
+
+	      <div class=title>
+		<p class=hittitle>{{hit|firsttitle}}</p>
+		<p class=titleinfo>
+		  <span class=b>Sequence ID:</span> {{hit|seqid}}
+		  <span class=b>Length:</span> {{hit.Hit_len}}
+		  <span class=b>Number of Matches:</span> {{hit.Hit_hsps.Hsp|length}}
+		</p>
+	      </div>
+
+	      <a class=showmoretitles onclick="toggle_visibility('moretitles{{hit.Hit_num}}'); return false;" href=''>
+		Show {{hit|othertitles|length}} more title(s)
+	      </a>
+
+	      <div class=moretitles id=moretitles{{hit.Hit_num}}>
+		{% for title in hit|othertitles %}
+		<div class=title>
+		  <p class=hittitle>{{title.title}}</p>
+		  <p class=titleinfo>
+		    <span class=b>Sequence ID:</span> {{title.id}}
+		  </p>
+		</div>
+		{% endfor %}
+	      </div>
+
+	      {% for hsp in hit.Hit_hsps.Hsp %}
+	      <div class=hotspots>
+		<p>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}}</p>
+
+		<table class=hotspotstable>
+		  <tr>
+		    <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+		  </tr>
+		  <tr>
+		    <td>{{hsp['Hsp_bit-score']|fmt('.1f')}} bits({{hsp.Hsp_score}})</td>
+		    <td>{{hsp.Hsp_evalue|fmt('.1f')}}</td>
+		    <td>{{ hsp.Hsp_identity }}/{{ hsp|len }}({{
+		      (hsp.Hsp_identity/hsp|len) |fmt('.0%') }})</td>
+		    <td>{{ hsp.Hsp_gaps }}/{{ hsp|len
+		      }}({{ (hsp.Hsp_gaps / hsp|len) | fmt('.0%') }})</td>
+		    <td>{{ hsp['Hsp_query-frame']|asframe }}/{{ hsp['Hsp_hit-frame']|asframe }}</td>
+
+		  </tr>
+		</table>
+
+		<pre>{{hsp|alignment_pre}}</pre>
+		
+	      </div>
+	      {% endfor %}
+	      
+	      <p>
+	      {{hit.Hit_id}}
+	      
+	      Hit {{hit.Hit_num}}
+	      </p>
+	    </div>
+	    {% endfor %}
+	</div></div>
       </div>
 
     </div>

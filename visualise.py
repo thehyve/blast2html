@@ -11,6 +11,21 @@ from lxml import objectify
 import jinja2
 
 
+blast = objectify.parse('blast xml example1.xml').getroot()
+loader = jinja2.FileSystemLoader(searchpath='.')
+environment = jinja2.Environment(loader=loader, lstrip_blocks=True, trim_blocks=True, autoescape=True)
+
+def filter(func_or_name):
+    if isinstance(func_or_name, str):
+        def inner(func):
+            environment.filters[func_or_name] = func
+            return func
+        return inner
+    else:
+        environment.filters[func_or_name.__name__] = func_or_name
+        return func_or_name
+
+
 def color_idx(length):
     if length < 40:
         return 0
@@ -22,20 +37,66 @@ def color_idx(length):
         return 3
     return 4
 
-
 colors = ['black', 'blue', 'green', 'magenta', 'red']
 
-blast = objectify.parse('blast xml example1.xml').getroot()
-loader = jinja2.FileSystemLoader(searchpath='.')
-environment = jinja2.Environment(loader=loader, lstrip_blocks=True, trim_blocks=True, autoescape=True)
 environment.filters['color'] = lambda length: match_colors[color_idx(length)]
+
+@filter
+def fmt(val, fmt):
+    return format(float(val), fmt)
+
+@filter
+def firsttitle(hit):
+    return hit.Hit_def.text.split('>')[0]
+
+@filter
+def othertitles(hit):
+    """Split a hit.Hit_def that contains multiple titles up, splitting out the hit ids from the titles."""
+    id_titles = hit.Hit_def.text.split('>')
+
+    titles = []
+    for t in id_titles[1:]:
+        fullid, title = t.split(' ', 1)
+        id = fullid.split('|', 2)[2]
+        titles.append(dict(id = id,
+                           fullid = fullid,
+                           title = title))
+    return titles
+
+@filter
+def hitid(hit):
+    return hit.Hit_id.text.split('|', 2)[1]
+
+@filter
+def seqid(hit):
+    return hit.Hit_id.text.split('|', 2)[2]
+
+@filter
+def alignment_pre(hsp):
+    return (
+        "Query   {:>7s}  {}  {}\n".format(hsp['Hsp_query-from'], hsp.Hsp_qseq, hsp['Hsp_query-to']) +
+        "        {:7s}  {}\n".format('', hsp.Hsp_midline) +
+        "Subject {:>7s}  {}  {}".format(hsp['Hsp_hit-from'], hsp.Hsp_hseq, hsp['Hsp_hit-to']))
+
+@filter('len')
+def hsplen(node):
+    return int(node['Hsp_align-len'])
+
+@filter
+def asframe(frame):
+    if frame == 1:
+        return 'Plus'
+    elif frame == -1:
+        return 'Minus'
+    raise Exception("frame should be either +1 or -1")
+
 
 query_length = int(blast["BlastOutput_query-len"])
 
 hits = blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit
 # sort hits by longest hotspot first
 ordered_hits = sorted(hits,
-                      key=lambda h: max(hsp['Hsp_align-len'] for hsp in h.Hit_hsps.Hsp),
+                      key=lambda h: max(hsplen(hsp) for hsp in h.Hit_hsps.Hsp),
                       reverse=True)
 
 def match_colors():
@@ -48,12 +109,12 @@ def match_colors():
     for hit in hits:
         # sort hotspots from short to long, so we can overwrite index colors of
         # short matches with those of long ones.
-        hotspots = sorted(hit.Hit_hsps.Hsp, key=lambda hsp: hsp['Hsp_align-len'])
+        hotspots = sorted(hit.Hit_hsps.Hsp, key=lambda hsp: hsplen(hsp))
         table = bytearray([255]) * query_length
         for hsp in hotspots:
             frm = hsp['Hsp_query-from'] - 1
             to = int(hsp['Hsp_query-to'])
-            table[frm:to] = repeat(color_idx(hsp['Hsp_align-len']), to - frm)
+            table[frm:to] = repeat(color_idx(hsplen(hsp)), to - frm)
 
         matches = []
         last = table[0]
@@ -67,7 +128,7 @@ def match_colors():
             count = 1
         matches.append((count * percent_multiplier, colors[last] if last != 255 else 'none'))
 
-        yield dict(colors=matches, link="#hit"+hit.Hit_num.text, defline=hit.Hit_def)
+        yield dict(colors=matches, link="#hit"+hit.Hit_num.text, defline=firsttitle(hit))
 
 
 def queryscale():
@@ -88,22 +149,23 @@ def hit_info():
 
         cover = [False] * query_length
         for hsp in hsps:
-            cover[hsp['Hsp_query-from']-1 : int(hsp['Hsp_query-to'])] = repeat(True, int(hsp['Hsp_align-len']))
+            cover[hsp['Hsp_query-from']-1 : int(hsp['Hsp_query-to'])] = repeat(True, hsplen(hsp))
         cover_count = cover.count(True)
         
         def hsp_val(path):
             return (hsp[path] for hsp in hsps)
         
-        yield dict(description = hit.Hit_def,
-                   maxscore = max(hsp_val('Hsp_bit-score')),
-                   totalscore = sum(hsp_val('Hsp_bit-score')),
+        yield dict(title = firsttitle(hit),
+                   link_id = hit.Hit_num,
+                   maxscore = "{:.1f}".format(float(max(hsp_val('Hsp_bit-score')))),
+                   totalscore = "{:.1f}".format(float(sum(hsp_val('Hsp_bit-score')))),
                    cover = "{:.0%}".format(cover_count / query_length),
-                   e_value = min(hsp_val('Hsp_evalue')),
+                   e_value = "{:.4g}".format(float(min(hsp_val('Hsp_evalue')))),
                    # FIXME: is this the correct formula vv?
-                   ident = "{:.0%}".format(min(hsp.Hsp_identity / hsp['Hsp_align-len'] for hsp in hsps)),
+                   ident = "{:.0%}".format(float(min(hsp.Hsp_identity / hsplen(hsp) for hsp in hsps))),
                    accession = hit.Hit_accession)
-                   
-        
+
+
 def main():
     template = environment.get_template('visualise.html.jinja')
 
@@ -119,7 +181,7 @@ def main():
 
     sys.stdout.write(template.render(blast=blast,
                                      length=query_length,
-                                     #hits=blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
+                                     hits=blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
                                      colors=colors,
                                      match_colors=match_colors(),
                                      queryscale=queryscale(),
