@@ -71,9 +71,9 @@ def seqid(hit):
 @filter
 def alignment_pre(hsp):
     return (
-        "Query  {:>7s}  {}  {}\n".format(hsp['Hsp_query-from'], hsp.Hsp_qseq, hsp['Hsp_query-to']) +
+        "Query  {:>7s}  {}  {}\n".format(hsp['Hsp_query-from'].text, hsp.Hsp_qseq, hsp['Hsp_query-to'].text) +
         "       {:7s}  {}\n".format('', hsp.Hsp_midline) +
-        "Subject{:>7s}  {}  {}".format(hsp['Hsp_hit-from'], hsp.Hsp_hseq, hsp['Hsp_hit-to'])
+        "Subject{:>7s}  {}  {}".format(hsp['Hsp_hit-from'].text, hsp.Hsp_hseq, hsp['Hsp_hit-to'].text)
     )
 
 @filter('len')
@@ -105,7 +105,7 @@ class BlastVisualize:
 
     max_scale_labels = 10
 
-    templatename = 'visualise.html.jinja'
+    templatename = 'blast_html.html.jinja'
 
     def __init__(self, input):
         self.input = input
