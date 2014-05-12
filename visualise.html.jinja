@@ -8,7 +8,7 @@
     <style>
       body {
       color: #33333;
-      font-family: Verdana,Arial,Sans-Serif;
+      font-family: Arial,Sans-Serif;
       }
 
       #content {
@@ -36,12 +36,16 @@
       font-weight: bold;
       }
 
-      h4.blackHeader {
-      color: black;
+      h4.darkHeader {
+      color: #4D4D4D;
       letter-spacing: 0;
-      font-style: bold;
+      font-weight: bold;
       }
 
+      #nodata {
+      font-weight: bold;
+      }
+      
       .headerdata {
       font-size: 90%;
       }
@@ -188,6 +192,8 @@
       background-color: #D5DEE3;
       }
       table.descriptiontable th {
+      color: #14376C;
+      font-weight: normal;
       background-color: #F0F0F0;
       background: linear-gradient(#FFFFFF, #F0F0F0);
       border-bottom: 1px solid #D4DFE9;
@@ -206,13 +212,107 @@
       white-space: nowrap;
       text-align: left;
       }
+      table.descriptiontable a:link {
+      color: #336699;
+      }
 
+      #alignments .white {
+      padding: 1.5em 1em;
+      }
+      
+      .alignment {
+      border-top: 1px solid black;
+      padding-left: 1em;
+      padding-right: 1em;
+      }
+      
+      div.linkheader {
+      padding-top: .2em;
+      text-align: right;
+      font-size: 85%;
+      color: #14376C;
+      }
+      div.linkheader a {
+      color: #14376C;
+      text-decoration: none;
+      }
+
+      .title .hittitle {
+      color: #22222;
+      margin-bottom: .3em;
+      }
+      .title .titleinfo {
+      font-size: 80%;
+      margin-top: 0;
+      }
+      .title .titleinfo .b {
+      color: #606060;
+      font-weight: bold;
+      font-size: 90%;
+      }
+
+      .moretitles {
+      margin: 1.2em;
+      }
+      .moretitles .titleinfo {
+      margin: 0;
+      padding: 0;
+      }
+      .moretitles .hittitle {
+      margin: .2em 0;
+      padding: 0;
+      }
+      
+      a.showmoretitles {
+      font-size: 85%;
+      color: #336699;
+      }
+      a.showmoretitles:hover {
+      }
+
+      .hotspot {
+      color: #606060;
+      font-family: verdana, arial, sans-serif;
+      margin-bottom: 2.5em;
+      }
+
+      .hotspot .range {
+      font-size: 70%;
+      margin-top: 0;
+      font-weight: bold;
+      margin-top: 1em;
+      margin-bottom: .2em;
+      }
+
+      table.hotspotstable {
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+      text-align: left;
+      border-collapse: collapse;
+      }
+      table.hotspotstable th, table.hotspotstable td {
+      padding: .1em 1em;
+      }
+      table.hotspotstable th {
+      font-size: 70%;
+      }
+      table.hotspotstable td {
+      min-width: 7em;
+      color: #222222;
+      font-size: 80%;
+      }
+
+      pre.alignmentgraphic {
+      color: #222222;
+      }
+
+      
     </style>
 
     <script type="text/javascript">
       function toggle_visibility(id) {
 	 var e = document.getElementById(id);
-	 if(e.style.display == 'none')
+	 if(e.style.display != 'block')
 	    e.style.display = 'block';
 	 else
 	    e.style.display = 'none';
@@ -221,6 +321,7 @@
 
   </head>
 
+  
   <body>
     <div id=content>
       <h1>Nucleotide Sequence ({{length}} letters)</h1>
@@ -235,6 +336,18 @@
           
       </div>
 
+      {% if not (blast.BlastOutput_iterations.find('Iteration') and
+                 blast.BlastOutput_iterations.Iteration.Iteration_hits.find('Hit')) %}
+      <div id=nodata>
+	<h2>No Results</h2>
+	<div class=grey>
+	  No Matches
+	</div>
+      </div>
+      {% else %}
+
+
+      
       <div id=graphics>
         <h2>Graphic Summary</h2>
 
@@ -244,13 +357,13 @@
           <div id=defline>Mouse-over to show defline and scores, click to show alignments</div>
 
           <div class=graphic>
-            <h4 class=blackHeader>Color key for alignment scores</h4>
+            <h4 class=darkHeader>Color key for alignment scores</h4>
 	    <div class=legend><div class=graphicrow>
 		<div class=graphicitem style="background-color: {{colors[0]}}">&lt;40</div>
-		<div class=graphicitem style="background-color: {{colors[1]}}">40-50</div>
+		<div class=graphicitem style="background-color: {{colors[1]}}">40&endash;50</div>
 		<div class=graphicitem style="background-color: {{colors[2]}}">50-80</div>
 		<div class=graphicitem style="background-color: {{colors[3]}}">80-200</div>
-		<div class=graphicitem style="background-color: {{colors[4]}}">200&le;</div>
+		<div class=graphicitem style="background-color: {{colors[4]}}">200≤</div>
             </div></div>
 	    <div style="clear: left"></div>
 
@@ -295,7 +408,7 @@
         <h2>Descriptions</h2>
 
         <div class=grey><div class=white>
-            <h4 class=blackHeader>Sequences producing significant alignments:</h4>
+            <h4 class=darkHeader>Sequences producing significant alignments:</h4>
 
             <table class=descriptiontable>
 	      <col/><col/><col/><col/><col/><col/><col/>
@@ -320,7 +433,7 @@
                 <td>{{hit.cover}}</td>
                 <td>{{hit.e_value}}</td>
                 <td>{{hit.ident}}</td>
-                <td>{{hit.accession}}</td>
+                <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit.hit|hitid}}?report=genbank&log$=nucltop&blast_rank=1">{{hit.accession}}</a></td>
               </tr>
               {% endfor %}
             </table>
@@ -328,8 +441,8 @@
         </div></div>
       </div>
 
-
       
+
       <div id=alignments>
 	<h2>Alignments</h2>
 	
@@ -344,17 +457,18 @@
 	      <div class=title>
 		<p class=hittitle>{{hit|firsttitle}}</p>
 		<p class=titleinfo>
-		  <span class=b>Sequence ID:</span> {{hit|seqid}}
+		  <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit|hitid}}?report=genbank&log$=nuclalign&blast_rank=1">{{hit|seqid}}</a>
 		  <span class=b>Length:</span> {{hit.Hit_len}}
 		  <span class=b>Number of Matches:</span> {{hit.Hit_hsps.Hsp|length}}
 		</p>
 	      </div>
 
+	      {% if hit|othertitles|length %}
 	      <a class=showmoretitles onclick="toggle_visibility('moretitles{{hit.Hit_num}}'); return false;" href=''>
-		Show {{hit|othertitles|length}} more title(s)
+		See {{hit|othertitles|length}} more title(s)
 	      </a>
 
-	      <div class=moretitles id=moretitles{{hit.Hit_num}}>
+	      <div class=moretitles id=moretitles{{hit.Hit_num}} style="display: none">
 		{% for title in hit|othertitles %}
 		<div class=title>
 		  <p class=hittitle>{{title.title}}</p>
@@ -364,10 +478,11 @@
 		</div>
 		{% endfor %}
 	      </div>
+	      {% endif %}
 
 	      {% for hsp in hit.Hit_hsps.Hsp %}
-	      <div class=hotspots>
-		<p>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}}</p>
+	      <div class=hotspot>
+		<p class=range>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}} <a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit|hitid}}?report=genbank&log$=nuclalign&blast_rank=1&from={{hsp['Hsp_hit-from']}}&to={{hsp['Hsp_hit-to']}}">GenBank</a></p>
 
 		<table class=hotspotstable>
 		  <tr>
@@ -381,25 +496,20 @@
 		    <td>{{ hsp.Hsp_gaps }}/{{ hsp|len
 		      }}({{ (hsp.Hsp_gaps / hsp|len) | fmt('.0%') }})</td>
 		    <td>{{ hsp['Hsp_query-frame']|asframe }}/{{ hsp['Hsp_hit-frame']|asframe }}</td>
-
 		  </tr>
 		</table>
 
-		<pre>{{hsp|alignment_pre}}</pre>
-		
+		<pre class=alignmentgraphic>{{hsp|alignment_pre}}</pre>
 	      </div>
 	      {% endfor %}
 	      
-	      <p>
-	      {{hit.Hit_id}}
-	      
-	      Hit {{hit.Hit_num}}
-	      </p>
 	    </div>
+
 	    {% endfor %}
 	</div></div>
       </div>
 
+      {% endif %}
     </div>
   </body>
 </html>

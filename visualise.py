@@ -16,6 +16,7 @@ loader = jinja2.FileSystemLoader(searchpath='.')
 environment = jinja2.Environment(loader=loader, lstrip_blocks=True, trim_blocks=True, autoescape=True)
 
 def filter(func_or_name):
+    "Decorator to register a function as filter in the current jinja environment"
     if isinstance(func_or_name, str):
         def inner(func):
             environment.filters[func_or_name] = func
@@ -74,9 +75,10 @@ def seqid(hit):
 @filter
 def alignment_pre(hsp):
     return (
-        "Query   {:>7s}  {}  {}\n".format(hsp['Hsp_query-from'], hsp.Hsp_qseq, hsp['Hsp_query-to']) +
-        "        {:7s}  {}\n".format('', hsp.Hsp_midline) +
-        "Subject {:>7s}  {}  {}".format(hsp['Hsp_hit-from'], hsp.Hsp_hseq, hsp['Hsp_hit-to']))
+        "Query  {:>7s}  {}  {}\n".format(hsp['Hsp_query-from'], hsp.Hsp_qseq, hsp['Hsp_query-to']) +
+        "       {:7s}  {}\n".format('', hsp.Hsp_midline) +
+        "Subject{:>7s}  {}  {}".format(hsp['Hsp_hit-from'], hsp.Hsp_hseq, hsp['Hsp_hit-to'])
+    )
 
 @filter('len')
 def hsplen(node):
@@ -155,7 +157,8 @@ def hit_info():
         def hsp_val(path):
             return (hsp[path] for hsp in hsps)
         
-        yield dict(title = firsttitle(hit),
+        yield dict(hit = hit,
+                   title = firsttitle(hit),
                    link_id = hit.Hit_num,
                    maxscore = "{:.1f}".format(float(max(hsp_val('Hsp_bit-score')))),
                    totalscore = "{:.1f}".format(float(sum(hsp_val('Hsp_bit-score')))),
@@ -189,3 +192,8 @@ def main():
                                      params=params))
 
 main()
+
+# http://www.ncbi.nlm.nih.gov/nucleotide/557804451?report=genbank&log$=nuclalign&blast_rank=1&RID=PHWP1JNZ014
+# http://www.ncbi.nlm.nih.gov/nuccore/557804451?report=graph&rid=PHWP1JNZ014[557804451]&tracks=[key:sequence_track,name:Sequence,display_name:Sequence,id:STD1,category:Sequence,annots:Sequence,ShowLabel:true][key:gene_model_track,CDSProductFeats:false][key:alignment_track,name:other%20alignments,annots:NG%20Alignments%7CRefseq%20Alignments%7CGnomon%20Alignments%7CUnnamed,shown:false]&v=752:2685&appname=ncbiblast&link_loc=fromSubj
+
+# http://www.ncbi.nlm.nih.gov/nucleotide/557804451?report=genbank&log$=nucltop&blast_rank=1&RID=PHWP1JNZ014
