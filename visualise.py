@@ -7,23 +7,22 @@ import sys
 import math
 import warnings
 from itertools import repeat
+import argparse
 from lxml import objectify
 import jinja2
 
 
-blast = objectify.parse('blast xml example1.xml').getroot()
-loader = jinja2.FileSystemLoader(searchpath='.')
-environment = jinja2.Environment(loader=loader, lstrip_blocks=True, trim_blocks=True, autoescape=True)
 
+_filters = {}
 def filter(func_or_name):
     "Decorator to register a function as filter in the current jinja environment"
     if isinstance(func_or_name, str):
         def inner(func):
-            environment.filters[func_or_name] = func
+            _filters[func_or_name] = func
             return func
         return inner
     else:
-        environment.filters[func_or_name.__name__] = func_or_name
+        _filters[func_or_name.__name__] = func_or_name
         return func_or_name
 
 
@@ -37,10 +36,6 @@ def color_idx(length):
     elif length < 200:
         return 3
     return 4
-
-colors = ['black', 'blue', 'green', 'magenta', 'red']
-
-environment.filters['color'] = lambda length: match_colors[color_idx(length)]
 
 @filter
 def fmt(val, fmt):
@@ -58,8 +53,9 @@ def othertitles(hit):
     titles = []
     for t in id_titles[1:]:
         fullid, title = t.split(' ', 1)
-        id = fullid.split('|', 2)[2]
+        hitid, id = fullid.split('|', 2)[1:3]
         titles.append(dict(id = id,
+                           hitid = hitid,
                            fullid = fullid,
                            title = title))
     return titles
@@ -92,108 +88,158 @@ def asframe(frame):
         return 'Minus'
     raise Exception("frame should be either +1 or -1")
 
-
-query_length = int(blast["BlastOutput_query-len"])
-
-hits = blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit
-# sort hits by longest hotspot first
-ordered_hits = sorted(hits,
-                      key=lambda h: max(hsplen(hsp) for hsp in h.Hit_hsps.Hsp),
-                      reverse=True)
-
-def match_colors():
-    """
-    An iterator that yields lists of length-color pairs. 
-    """
-
-    percent_multiplier = 100 / query_length
-    
-    for hit in hits:
-        # sort hotspots from short to long, so we can overwrite index colors of
-        # short matches with those of long ones.
-        hotspots = sorted(hit.Hit_hsps.Hsp, key=lambda hsp: hsplen(hsp))
-        table = bytearray([255]) * query_length
-        for hsp in hotspots:
-            frm = hsp['Hsp_query-from'] - 1
-            to = int(hsp['Hsp_query-to'])
-            table[frm:to] = repeat(color_idx(hsplen(hsp)), to - frm)
-
-        matches = []
-        last = table[0]
-        count = 0
-        for i in range(query_length):
-            if table[i] == last:
-                count += 1
-                continue
-            matches.append((count * percent_multiplier, colors[last] if last != 255 else 'none'))
-            last = table[i]
-            count = 1
-        matches.append((count * percent_multiplier, colors[last] if last != 255 else 'none'))
-
-        yield dict(colors=matches, link="#hit"+hit.Hit_num.text, defline=firsttitle(hit))
+def genelink(hit, type='genbank', hsp=None):
+    if not isinstance(hit, str):
+        hit = hitid(hit)
+    link = "http://www.ncbi.nlm.nih.gov/nucleotide/{}?report={}&log$=nuclalign".format(hit, type)
+    if hsp != None:
+        link += "&from={}&to={}".format(hsp['Hsp_hit-from'], hsp['Hsp_hit-to'])
+    return jinja2.Markup(link)
 
 
-def queryscale():
-    max_labels = 10
-    skip = math.ceil(query_length / max_labels)
-    percent_multiplier = 100 / query_length
-    for i in range(1, query_length+1):
-        if i % skip == 0:
-            yield dict(label = i, width = skip * percent_multiplier)
-    if query_length % skip != 0:
-        yield dict(label = query_length, width = (query_length % skip) * percent_multiplier)
 
 
-def hit_info():
+class BlastVisualize:
 
-    for hit in ordered_hits:
-        hsps = hit.Hit_hsps.Hsp
+    colors = ('black', 'blue', 'green', 'magenta', 'red')
 
-        cover = [False] * query_length
-        for hsp in hsps:
-            cover[hsp['Hsp_query-from']-1 : int(hsp['Hsp_query-to'])] = repeat(True, hsplen(hsp))
-        cover_count = cover.count(True)
-        
-        def hsp_val(path):
-            return (hsp[path] for hsp in hsps)
-        
-        yield dict(hit = hit,
-                   title = firsttitle(hit),
-                   link_id = hit.Hit_num,
-                   maxscore = "{:.1f}".format(float(max(hsp_val('Hsp_bit-score')))),
-                   totalscore = "{:.1f}".format(float(sum(hsp_val('Hsp_bit-score')))),
-                   cover = "{:.0%}".format(cover_count / query_length),
-                   e_value = "{:.4g}".format(float(min(hsp_val('Hsp_evalue')))),
-                   # FIXME: is this the correct formula vv?
-                   ident = "{:.0%}".format(float(min(hsp.Hsp_identity / hsplen(hsp) for hsp in hsps))),
-                   accession = hit.Hit_accession)
+    max_scale_labels = 10
+
+    templatename = 'visualise.html.jinja'
+
+    def __init__(self, input):
+        self.input = input
+
+        self.blast = objectify.parse(self.input).getroot()
+        self.loader = jinja2.FileSystemLoader(searchpath='.')
+        self.environment = jinja2.Environment(loader=self.loader,
+                                              lstrip_blocks=True, trim_blocks=True, autoescape=True)
+
+        self.environment.filters['color'] = lambda length: match_colors[color_idx(length)]
+
+        for name, filter in _filters.items():
+            self.environment.filters[name] = filter
+
+        self.query_length = int(self.blast["BlastOutput_query-len"])
+        self.hits = self.blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit
+        # sort hits by longest hotspot first
+        self.ordered_hits = sorted(self.hits,
+                                   key=lambda h: max(hsplen(hsp) for hsp in h.Hit_hsps.Hsp),
+                                   reverse=True)
+
+    def render(self, output):
+        template = self.environment.get_template(self.templatename)
+
+        params = (('Query ID', self.blast["BlastOutput_query-ID"]),
+                  ('Query definition', self.blast["BlastOutput_query-def"]),
+                  ('Query length', self.blast["BlastOutput_query-len"]),
+                  ('Program', self.blast.BlastOutput_version),
+                  ('Database', self.blast.BlastOutput_db),
+        )
+
+        if len(self.blast.BlastOutput_iterations.Iteration) > 1:
+            warnings.warn("Multiple 'Iteration' elements found, showing only the first")
+
+        output.write(template.render(blast=self.blast,
+                                          length=self.query_length,
+                                          hits=self.blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
+                                          colors=self.colors,
+                                          match_colors=self.match_colors(),
+                                          queryscale=self.queryscale(),
+                                          hit_info=self.hit_info(),
+                                          genelink=genelink,
+                                          params=params))
+            
+
+    def match_colors(self):
+        """
+        An iterator that yields lists of length-color pairs. 
+        """
+
+        percent_multiplier = 100 / self.query_length
+
+        for hit in self.hits:
+            # sort hotspots from short to long, so we can overwrite index colors of
+            # short matches with those of long ones.
+            hotspots = sorted(hit.Hit_hsps.Hsp, key=lambda hsp: hsplen(hsp))
+            table = bytearray([255]) * self.query_length
+            for hsp in hotspots:
+                frm = hsp['Hsp_query-from'] - 1
+                to = int(hsp['Hsp_query-to'])
+                table[frm:to] = repeat(color_idx(hsplen(hsp)), to - frm)
+
+            matches = []
+            last = table[0]
+            count = 0
+            for i in range(self.query_length):
+                if table[i] == last:
+                    count += 1
+                    continue
+                matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'none'))
+                last = table[i]
+                count = 1
+            matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'none'))
+
+            yield dict(colors=matches, link="#hit"+hit.Hit_num.text, defline=firsttitle(hit))
+
+
+    def queryscale(self):
+        skip = math.ceil(self.query_length / self.max_scale_labels)
+        percent_multiplier = 100 / self.query_length
+        for i in range(1, self.query_length+1):
+            if i % skip == 0:
+                yield dict(label = i, width = skip * percent_multiplier)
+        if self.query_length % skip != 0:
+            yield dict(label = self.query_length, width = (self.query_length % skip) * percent_multiplier)
+
+
+    def hit_info(self):
+
+        for hit in self.ordered_hits:
+            hsps = hit.Hit_hsps.Hsp
+
+            cover = [False] * self.query_length
+            for hsp in hsps:
+                cover[hsp['Hsp_query-from']-1 : int(hsp['Hsp_query-to'])] = repeat(True, hsplen(hsp))
+            cover_count = cover.count(True)
+
+            def hsp_val(path):
+                return (float(hsp[path]) for hsp in hsps)
+
+            yield dict(hit = hit,
+                       title = firsttitle(hit),
+                       link_id = hit.Hit_num,
+                       maxscore = "{:.1f}".format(max(hsp_val('Hsp_bit-score'))),
+                       totalscore = "{:.1f}".format(sum(hsp_val('Hsp_bit-score'))),
+                       cover = "{:.0%}".format(cover_count / self.query_length),
+                       e_value = "{:.4g}".format(min(hsp_val('Hsp_evalue'))),
+                       # FIXME: is this the correct formula vv?
+                       ident = "{:.0%}".format(float(min(hsp.Hsp_identity / hsplen(hsp) for hsp in hsps))),
+                       accession = hit.Hit_accession)
 
 
 def main():
-    template = environment.get_template('visualise.html.jinja')
 
-    params = (('Query ID', blast["BlastOutput_query-ID"]),
-              ('Query definition', blast["BlastOutput_query-def"]),
-              ('Query length', blast["BlastOutput_query-len"]),
-              ('Program', blast.BlastOutput_version),
-              ('Database', blast.BlastOutput_db),
-            )
+    parser = argparse.ArgumentParser(description="Convert a BLAST XML result into a nicely readable html page",
+                                     usage="{} [-i] INPUT [-o OUTPUT]".format(sys.argv[0]))
+    input_group = parser.add_mutually_exclusive_group(required=True)
+    input_group.add_argument('positional_arg', metavar='INPUT', nargs='?', type=argparse.FileType(mode='r'),
+                             help='The input Blast XML file, same as -i/--input')
+    input_group.add_argument('-i', '--input', type=argparse.FileType(mode='r'), 
+                             help='The input Blast XML file')
+    parser.add_argument('-o', '--output', type=argparse.FileType(mode='w'), default=sys.stdout,
+                        help='The output html file')
 
-    if len(blast.BlastOutput_iterations.Iteration) > 1:
-        warnings.warn("Multiple 'Iteration' elements found, showing only the first")
+    args = parser.parse_args()
+    if args.input == None:
+        args.input = args.positional_arg
+    if args.input == None:
+        parser.error('no input specified')
 
-    sys.stdout.write(template.render(blast=blast,
-                                     length=query_length,
-                                     hits=blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
-                                     colors=colors,
-                                     match_colors=match_colors(),
-                                     queryscale=queryscale(),
-                                     hit_info=hit_info(),
-                                     params=params))
+    b = BlastVisualize(args.input)
+    b.render(args.output)
 
-main()
 
-# http://www.ncbi.nlm.nih.gov/nucleotide/557804451?report=genbank&log$=nuclalign&blast_rank=1&RID=PHWP1JNZ014
-# http://www.ncbi.nlm.nih.gov/nuccore/557804451?report=graph&rid=PHWP1JNZ014[557804451]&tracks=[key:sequence_track,name:Sequence,display_name:Sequence,id:STD1,category:Sequence,annots:Sequence,ShowLabel:true][key:gene_model_track,CDSProductFeats:false][key:alignment_track,name:other%20alignments,annots:NG%20Alignments%7CRefseq%20Alignments%7CGnomon%20Alignments%7CUnnamed,shown:false]&v=752:2685&appname=ncbiblast&link_loc=fromSubj
+if __name__ == '__main__':
+    main()
 
-# http://www.ncbi.nlm.nih.gov/nucleotide/557804451?report=genbank&log$=nucltop&blast_rank=1&RID=PHWP1JNZ014

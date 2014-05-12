@@ -11,6 +11,14 @@
       font-family: Arial,Sans-Serif;
       }
 
+      :link {
+      color: #336699;
+      }
+
+      .right {
+      float: right;
+      }
+
       #content {
       margin: 0 2em;
       padding: 0.5em;
@@ -76,10 +84,12 @@
       float: left;
       }
 
+
+      
       .graphic {
       background-color: white;
       border: 2px solid black;
-      padding: .5em;
+      padding: .5em 1.5em;
       align: center;
       margin: auto;
       }
@@ -128,7 +138,7 @@
       }
 
       /* For small widths we give the graphic 100% */
-      @media (max-width: 70em) {
+      @media (max-width: 72.5em) {
       div.tablewrapper {
       width: 100%;
       min-width: 0px;
@@ -174,6 +184,8 @@
       height: 4px;
       }
 
+
+      
       div#descriptions {
       }
       
@@ -212,10 +224,9 @@
       white-space: nowrap;
       text-align: left;
       }
-      table.descriptiontable a:link {
-      color: #336699;
-      }
 
+
+      
       #alignments .white {
       padding: 1.5em 1em;
       }
@@ -228,12 +239,13 @@
       
       div.linkheader {
       padding-top: .2em;
-      text-align: right;
       font-size: 85%;
       color: #14376C;
       }
-      div.linkheader a {
-      color: #14376C;
+      div.linkheader a.linkheader {
+      margin-right: 1em;
+      }
+      div.linkheader .right a {
       text-decoration: none;
       }
 
@@ -244,6 +256,7 @@
       .title .titleinfo {
       font-size: 80%;
       margin-top: 0;
+      margin-bottom: .3em;
       }
       .title .titleinfo .b {
       color: #606060;
@@ -259,13 +272,15 @@
       padding: 0;
       }
       .moretitles .hittitle {
-      margin: .2em 0;
+      margin: .4em 0 .2em 0;
       padding: 0;
       }
       
       a.showmoretitles {
-      font-size: 85%;
+      font-size: 75%;
       color: #336699;
+      font-weight: bold;
+      margin-top: 0;
       }
       a.showmoretitles:hover {
       }
@@ -276,12 +291,17 @@
       margin-bottom: 2.5em;
       }
 
-      .hotspot .range {
+      .hotspot p.range {
       font-size: 70%;
       margin-top: 0;
-      font-weight: bold;
       margin-top: 1em;
       margin-bottom: .2em;
+      }
+      .hotspot p.range span.range {
+      font-weight: bold;
+      }
+      .hotspot p.range a.range {
+      margin-left: .5em;
       }
 
       table.hotspotstable {
@@ -330,14 +350,14 @@
 
         <table class=headerdata>
           {% for param, value in params %}
-            <tr><td class=param>{{param}}</td><td>{{value}}</td></tr>
+            <tr><td class=param>{{param}}:</td><td>{{value}}</td></tr>
           {% endfor %}
         </table>
           
       </div>
-
-      {% if not (blast.BlastOutput_iterations.find('Iteration') and
-                 blast.BlastOutput_iterations.Iteration.Iteration_hits.find('Hit')) %}
+      
+      {% if not (blast.BlastOutput_iterations.findall('Iteration') and
+                 blast.BlastOutput_iterations.Iteration.Iteration_hits.findall('Hit')) %}
       <div id=nodata>
 	<h2>No Results</h2>
 	<div class=grey>
@@ -360,9 +380,9 @@
             <h4 class=darkHeader>Color key for alignment scores</h4>
 	    <div class=legend><div class=graphicrow>
 		<div class=graphicitem style="background-color: {{colors[0]}}">&lt;40</div>
-		<div class=graphicitem style="background-color: {{colors[1]}}">40&endash;50</div>
-		<div class=graphicitem style="background-color: {{colors[2]}}">50-80</div>
-		<div class=graphicitem style="background-color: {{colors[3]}}">80-200</div>
+		<div class=graphicitem style="background-color: {{colors[1]}}">40–50</div>
+		<div class=graphicitem style="background-color: {{colors[2]}}">50–80</div>
+		<div class=graphicitem style="background-color: {{colors[3]}}">80–200</div>
 		<div class=graphicitem style="background-color: {{colors[4]}}">200≤</div>
             </div></div>
 	    <div style="clear: left"></div>
@@ -433,7 +453,7 @@
                 <td>{{hit.cover}}</td>
                 <td>{{hit.e_value}}</td>
                 <td>{{hit.ident}}</td>
-                <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit.hit|hitid}}?report=genbank&log$=nucltop&blast_rank=1">{{hit.accession}}</a></td>
+                <td><a href="{{genelink(hit.hit|hitid)}}">{{hit.accession}}</a></td>
               </tr>
               {% endfor %}
             </table>
@@ -451,13 +471,15 @@
 	    <div class=alignment id=hit{{hit.Hit_num}}>
 	      
 	      <div class=linkheader>
-		<a href="#description{{hit.Hit_num}}">Descriptions</a>
+		<div class=right><a href="#description{{hit.Hit_num}}">Descriptions</a></div>
+		<a class=linkheader href="{{genelink(hit|hitid)}}">GenBank</a>
+		<a class=linkheader href="{{genelink(hit|hitid, 'graph')}}">Graphics</a>
 	      </div>
-
+	      
 	      <div class=title>
 		<p class=hittitle>{{hit|firsttitle}}</p>
 		<p class=titleinfo>
-		  <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit|hitid}}?report=genbank&log$=nuclalign&blast_rank=1">{{hit|seqid}}</a>
+		  <span class=b>Sequence ID:</span> <a href="{{genelink(hit|hitid)}}">{{hit|seqid}}</a>
 		  <span class=b>Length:</span> {{hit.Hit_len}}
 		  <span class=b>Number of Matches:</span> {{hit.Hit_hsps.Hsp|length}}
 		</p>
@@ -473,7 +495,7 @@
 		<div class=title>
 		  <p class=hittitle>{{title.title}}</p>
 		  <p class=titleinfo>
-		    <span class=b>Sequence ID:</span> {{title.id}}
+		    <span class=b>Sequence ID:</span> <a href="{{genelink(title.hitid)}}">{{title.id}}</a>
 		  </p>
 		</div>
 		{% endfor %}
@@ -482,7 +504,11 @@
 
 	      {% for hsp in hit.Hit_hsps.Hsp %}
 	      <div class=hotspot>
-		<p class=range>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}} <a href="http://www.ncbi.nlm.nih.gov/nucleotide/{{hit|hitid}}?report=genbank&log$=nuclalign&blast_rank=1&from={{hsp['Hsp_hit-from']}}&to={{hsp['Hsp_hit-to']}}">GenBank</a></p>
+		<p class=range>
+		  <span class=range>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}}</span>
+		  <a class=range href="{{genelink(hit|hitid, 'genbank', hsp)}}">GenBank</a>
+		  <a class=range href="{{genelink(hit|hitid, 'graph', hsp)}}">Graphics</a>
+		</p>
 
 		<table class=hotspotstable>
 		  <tr>
