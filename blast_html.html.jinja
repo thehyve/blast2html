@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     
     <title>Blast output</title>
-
+    
     <style>
       body {
-      color: #33333;
+      color: #333333;
       font-family: Arial,Sans-Serif;
       }
 
@@ -86,20 +86,18 @@
 
 
       
+      .graphics .grey {
+      text-align: center;
+      }
+
       .graphic {
       background-color: white;
       border: 2px solid black;
       padding: .5em 1.5em;
-      align: center;
       margin: auto;
       }
 
-      #graphics .grey {
-      text-align: center;
-      }
-
       .centered, #defline, div.legend, div.tablewrapper {
-      align: center;
       margin-left: auto;
       margin-right: auto;
       }
@@ -250,7 +248,7 @@
       }
 
       .title .hittitle {
-      color: #22222;
+      color: #222222;
       margin-bottom: .3em;
       }
       .title .titleinfo {
@@ -331,11 +329,11 @@
 
     <script type="text/javascript">
       function toggle_visibility(id) {
-	 var e = document.getElementById(id);
-	 if(e.style.display != 'block')
-	    e.style.display = 'block';
-	 else
-	    e.style.display = 'none';
+          var e = document.getElementById(id);
+          if(e.style.display != 'block')
+              e.style.display = 'block';
+          else
+              e.style.display = 'none';
       }
     </script>
 
@@ -346,29 +344,29 @@
     <div id=content>
       <h1>Nucleotide Sequence ({{length}} letters)</h1>
 
-      <div id=header>
+      <div class=header>
 
         <table class=headerdata>
           {% for param, value in params %}
             <tr><td class=param>{{param}}:</td><td>{{value}}</td></tr>
           {% endfor %}
         </table>
-          
+        
       </div>
       
       {% if not (blast.BlastOutput_iterations.findall('Iteration') and
                  blast.BlastOutput_iterations.Iteration.Iteration_hits.findall('Hit')) %}
-      <div id=nodata>
-	<h2>No Results</h2>
-	<div class=grey>
-	  No Matches
-	</div>
+      <div class=nodata>
+        <h2>No Results</h2>
+        <div class=grey>
+          No Matches
+        </div>
       </div>
       {% else %}
 
 
       
-      <div id=graphics>
+      <div class=graphics>
         <h2>Graphic Summary</h2>
 
         <div class=grey>
@@ -378,41 +376,40 @@
 
           <div class=graphic>
             <h4 class=darkHeader>Color key for alignment scores</h4>
-	    <div class=legend><div class=graphicrow>
-		<div class=graphicitem style="background-color: {{colors[0]}}">&lt;40</div>
-		<div class=graphicitem style="background-color: {{colors[1]}}">40–50</div>
-		<div class=graphicitem style="background-color: {{colors[2]}}">50–80</div>
-		<div class=graphicitem style="background-color: {{colors[3]}}">80–200</div>
-		<div class=graphicitem style="background-color: {{colors[4]}}">200≤</div>
+            <div class=legend><div class=graphicrow>
+                <div class=graphicitem style="background-color: {{colors[0]}}">&lt;40</div>
+                <div class=graphicitem style="background-color: {{colors[1]}}">40–50</div>
+                <div class=graphicitem style="background-color: {{colors[2]}}">50–80</div>
+                <div class=graphicitem style="background-color: {{colors[3]}}">80–200</div>
+                <div class=graphicitem style="background-color: {{colors[4]}}">200≤</div>
             </div></div>
-	    <div style="clear: left"></div>
+            <div style="clear: left"></div>
 
             <div class=tablewrapper>
 
               <div class=scale>
                 <div>query:</div>
-		<div class=graphicrow>
-                    {% for s in queryscale %}
-                    <div class=graphicitem
-			 style="width: {{s.width|safe}}%">
-		      <div>{{s.label|safe}}</div>
-		    </div>
-                    {% endfor %}
-		</div>
-		<div style="clear: left"></div>
+                <div class=graphicrow>
+                  {% for s in queryscale %}
+                  <div class=graphicitem style="width: {{s.width}}%">
+                    <div>{{s.label}}</div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div style="clear: left"></div>
               </div>
               
               {% for line in match_colors %}
               <a class=matchresult
-		 href="{{line.link}}"
-                 onmouseover='document.getElementById("defline").innerHTML="{{line.defline}}"'
+                 href="{{line.link}}"
+                 onmouseover='document.getElementById("defline").innerHTML="{{line.defline|js_string_escape}}"'
                  onmouseout='document.getElementById("defline").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
                  title="{{line.defline}}">
                 <div class="matchrow graphicrow">
-                    {% for match in line.colors %}
-                    <div class="matchitem graphicitem"
-			 style="background-color: {{match[1]}}; width: {{match[0]}}%"></div>
-                    {% endfor %}
+                  {% for match in line.colors %}
+                  <div class="matchitem graphicitem"
+                       style="background-color: {{match[1]}}; width: {{match[0]}}%"></div>
+                  {% endfor %}
                 </div>
               </a>
               
@@ -431,7 +428,7 @@
             <h4 class=darkHeader>Sequences producing significant alignments:</h4>
 
             <table class=descriptiontable>
-	      <col/><col/><col/><col/><col/><col/><col/>
+              <col/><col/><col/><col/><col/><col/><col/>
               <tr>
                 <th>Description</th>
                 <th>Max score</th>
@@ -444,10 +441,10 @@
               {% for hit in hit_info %}
               <tr>
                 <td><div><a href="#hit{{hit.link_id}}"
-			    title="{{hit.title}}"
-			    name=description{{hit.link_id}}>
-		      {{hit.title}}
-		</a></div></td>
+                            title="{{hit.title}}"
+                            id="description{{hit.link_id}}">
+                      {{hit.title}}
+                </a></div></td>
                 <td>{{hit.maxscore}}</td>
                 <td>{{hit.totalscore}}</td>
                 <td>{{hit.cover}}</td>
@@ -464,75 +461,75 @@
       
 
       <div id=alignments>
-	<h2>Alignments</h2>
-	
-	<div class=grey><div class=white>
-	    {% for hit in hits %}
-	    <div class=alignment id=hit{{hit.Hit_num}}>
-	      
-	      <div class=linkheader>
-		<div class=right><a href="#description{{hit.Hit_num}}">Descriptions</a></div>
-		<a class=linkheader href="{{genelink(hit|hitid)}}">GenBank</a>
-		<a class=linkheader href="{{genelink(hit|hitid, 'graph')}}">Graphics</a>
-	      </div>
-	      
-	      <div class=title>
-		<p class=hittitle>{{hit|firsttitle}}</p>
-		<p class=titleinfo>
-		  <span class=b>Sequence ID:</span> <a href="{{genelink(hit|hitid)}}">{{hit|seqid}}</a>
-		  <span class=b>Length:</span> {{hit.Hit_len}}
-		  <span class=b>Number of Matches:</span> {{hit.Hit_hsps.Hsp|length}}
-		</p>
-	      </div>
+        <h2>Alignments</h2>
+        
+        <div class=grey><div class=white>
+            {% for hit in hits %}
+            <div class=alignment id=hit{{hit.Hit_num}}>
+              
+              <div class=linkheader>
+                <div class=right><a href="#description{{hit.Hit_num}}">Descriptions</a></div>
+                <a class=linkheader href="{{genelink(hit|hitid)}}">GenBank</a>
+                <a class=linkheader href="{{genelink(hit|hitid, 'graph')}}">Graphics</a>
+              </div>
+              
+              <div class=title>
+                <p class=hittitle>{{hit|firsttitle}}</p>
+                <p class=titleinfo>
+                  <span class=b>Sequence ID:</span> <a href="{{genelink(hit|hitid)}}">{{hit|seqid}}</a>
+                  <span class=b>Length:</span> {{hit.Hit_len}}
+                  <span class=b>Number of Matches:</span> {{hit.Hit_hsps.Hsp|length}}
+                </p>
+              </div>
 
-	      {% if hit|othertitles|length %}
-	      <a class=showmoretitles onclick="toggle_visibility('moretitles{{hit.Hit_num}}'); return false;" href=''>
-		See {{hit|othertitles|length}} more title(s)
-	      </a>
+              {% if hit|othertitles|length %}
+              <a class=showmoretitles onclick="toggle_visibility('moretitles{{hit.Hit_num|js_string_escape}}'); return false;" href=''>
+                See {{hit|othertitles|length}} more title(s)
+              </a>
 
-	      <div class=moretitles id=moretitles{{hit.Hit_num}} style="display: none">
-		{% for title in hit|othertitles %}
-		<div class=title>
-		  <p class=hittitle>{{title.title}}</p>
-		  <p class=titleinfo>
-		    <span class=b>Sequence ID:</span> <a href="{{genelink(title.hitid)}}">{{title.id}}</a>
-		  </p>
-		</div>
-		{% endfor %}
-	      </div>
-	      {% endif %}
+              <div class=moretitles id=moretitles{{hit.Hit_num}} style="display: none">
+                {% for title in hit|othertitles %}
+                <div class=title>
+                  <p class=hittitle>{{title.title}}</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="{{genelink(title.hitid)}}">{{title.id}}</a>
+                  </p>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
 
-	      {% for hsp in hit.Hit_hsps.Hsp %}
-	      <div class=hotspot>
-		<p class=range>
-		  <span class=range>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}}</span>
-		  <a class=range href="{{genelink(hit|hitid, 'genbank', hsp)}}">GenBank</a>
-		  <a class=range href="{{genelink(hit|hitid, 'graph', hsp)}}">Graphics</a>
-		</p>
+              {% for hsp in hit.Hit_hsps.Hsp %}
+              <div class=hotspot>
+                <p class=range>
+                  <span class=range>Range {{hsp.Hsp_num}}: {{hsp['Hsp_hit-from']}} to {{hsp['Hsp_hit-to']}}</span>
+                  <a class=range href="{{genelink(hit|hitid, 'genbank', hsp)}}">GenBank</a>
+                  <a class=range href="{{genelink(hit|hitid, 'graph', hsp)}}">Graphics</a>
+                </p>
 
-		<table class=hotspotstable>
-		  <tr>
-		    <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
-		  </tr>
-		  <tr>
-		    <td>{{hsp['Hsp_bit-score']|fmt('.1f')}} bits({{hsp.Hsp_score}})</td>
-		    <td>{{hsp.Hsp_evalue|fmt('.1f')}}</td>
-		    <td>{{ hsp.Hsp_identity }}/{{ hsp|len }}({{
-		      (hsp.Hsp_identity/hsp|len) |fmt('.0%') }})</td>
-		    <td>{{ hsp.Hsp_gaps }}/{{ hsp|len
-		      }}({{ (hsp.Hsp_gaps / hsp|len) | fmt('.0%') }})</td>
-		    <td>{{ hsp['Hsp_query-frame']|asframe }}/{{ hsp['Hsp_hit-frame']|asframe }}</td>
-		  </tr>
-		</table>
+                <table class=hotspotstable>
+                  <tr>
+                    <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                  </tr>
+                  <tr>
+                    <td>{{hsp['Hsp_bit-score']|fmt('.1f')}} bits({{hsp.Hsp_score}})</td>
+                    <td>{{hsp.Hsp_evalue|fmt('.1f')}}</td>
+                    <td>{{ hsp.Hsp_identity }}/{{ hsp|len }}({{
+                      (hsp.Hsp_identity/hsp|len) |fmt('.0%') }})</td>
+                    <td>{{ hsp.Hsp_gaps }}/{{ hsp|len
+                      }}({{ (hsp.Hsp_gaps / hsp|len) | fmt('.0%') }})</td>
+                    <td>{{ hsp['Hsp_query-frame']|asframe }}/{{ hsp['Hsp_hit-frame']|asframe }}</td>
+                  </tr>
+                </table>
 
-		<pre class=alignmentgraphic>{{hsp|alignment_pre}}</pre>
-	      </div>
-	      {% endfor %}
-	      
-	    </div>
+                <pre class=alignmentgraphic>{{hsp|alignment_pre}}</pre>
+              </div>
+              {% endfor %}
+              
+            </div>
 
-	    {% endfor %}
-	</div></div>
+            {% endfor %}
+        </div></div>
       </div>
 
       {% endif %}
@@ -540,3 +537,9 @@
   </body>
 </html>
 
+{#
+Local Variables:
+tab-width: 2
+indent-tabs-mode: nil
+End:
+#}

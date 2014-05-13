@@ -94,8 +94,44 @@ def genelink(hit, type='genbank', hsp=None):
     link = "http://www.ncbi.nlm.nih.gov/nucleotide/{}?report={}&log$=nuclalign".format(hit, type)
     if hsp != None:
         link += "&from={}&to={}".format(hsp['Hsp_hit-from'], hsp['Hsp_hit-to'])
-    return jinja2.Markup(link)
+    return link
 
+
+# javascript escape filter based on Django's, from https://github.com/dsissitka/khan-website/blob/master/templatefilters.py#L112-139
+# I've removed the html escapes, since html escaping is already being performed by the template engine.
+
+_base_js_escapes = (
+    ('\\', r'\u005C'),
+    ('\'', r'\u0027'),
+    ('"', r'\u0022'),
+    # ('>', r'\u003E'),
+    # ('<', r'\u003C'),
+    # ('&', r'\u0026'),
+    # ('=', r'\u003D'),
+    # ('-', r'\u002D'),
+    # (';', r'\u003B'),
+    # (u'\u2028', r'\u2028'),
+    # (u'\u2029', r'\u2029')
+)
+
+# Escape every ASCII character with a value less than 32. This is
+# needed a.o. to prevent parsers from jumping out of javascript
+# parsing mode.
+_js_escapes = (_base_js_escapes +
+               tuple(('%c' % z, '\\u%04X' % z) for z in range(32)))
+
+@filter
+def js_string_escape(value):
+    """Escape javascript string literal escapes. Note that this only works
+    within javascript string literals, not in general javascript
+    snippets."""
+
+    value = str(value)
+
+    for bad, good in _js_escapes:
+        value = value.replace(bad, good)
+
+    return value
 
 
 
@@ -175,10 +211,10 @@ class BlastVisualize:
                 if table[i] == last:
                     count += 1
                     continue
-                matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'none'))
+                matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'transparent'))
                 last = table[i]
                 count = 1
-            matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'none'))
+            matches.append((count * percent_multiplier, self.colors[last] if last != 255 else 'transparent'))
 
             yield dict(colors=matches, link="#hit"+hit.Hit_num.text, defline=firsttitle(hit))
 
