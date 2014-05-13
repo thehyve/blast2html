@@ -6,6 +6,7 @@
 import sys
 import math
 import warnings
+from os import path
 from itertools import repeat
 import argparse
 from lxml import objectify
@@ -115,7 +116,7 @@ _base_js_escapes = (
 )
 
 # Escape every ASCII character with a value less than 32. This is
-# needed a.o. to prevent parsers from jumping out of javascript
+# needed a.o. to prevent html parsers from jumping out of javascript
 # parsing mode.
 _js_escapes = (_base_js_escapes +
                tuple(('%c' % z, '\\u%04X' % z) for z in range(32)))
@@ -141,20 +142,17 @@ class BlastVisualize:
 
     max_scale_labels = 10
 
-    templatename = 'blast_html.html.jinja'
-
-    def __init__(self, input):
+    def __init__(self, input, templatedir, templatename):
         self.input = input
+        self.templatename = templatename
 
         self.blast = objectify.parse(self.input).getroot()
-        self.loader = jinja2.FileSystemLoader(searchpath='.')
+        self.loader = jinja2.FileSystemLoader(searchpath=templatedir)
         self.environment = jinja2.Environment(loader=self.loader,
                                               lstrip_blocks=True, trim_blocks=True, autoescape=True)
 
+        self.environment.filters.update(_filters)
         self.environment.filters['color'] = lambda length: match_colors[color_idx(length)]
-
-        for name, filter in _filters.items():
-            self.environment.filters[name] = filter
 
         self.query_length = int(self.blast["BlastOutput_query-len"])
         self.hits = self.blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit
@@ -177,15 +175,15 @@ class BlastVisualize:
             warnings.warn("Multiple 'Iteration' elements found, showing only the first")
 
         output.write(template.render(blast=self.blast,
-                                          length=self.query_length,
-                                          hits=self.blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
-                                          colors=self.colors,
-                                          match_colors=self.match_colors(),
-                                          queryscale=self.queryscale(),
-                                          hit_info=self.hit_info(),
-                                          genelink=genelink,
-                                          params=params))
-            
+                                     length=self.query_length,
+                                     hits=self.blast.BlastOutput_iterations.Iteration.Iteration_hits.Hit,
+                                     colors=self.colors,
+                                     match_colors=self.match_colors(),
+                                     queryscale=self.queryscale(),
+                                     hit_info=self.hit_info(),
+                                     genelink=genelink,
+                                     params=params))
+        
 
     def match_colors(self):
         """
@@ -253,7 +251,6 @@ class BlastVisualize:
                        ident = "{:.0%}".format(float(min(hsp.Hsp_identity / hsplen(hsp) for hsp in hsps))),
                        accession = hit.Hit_accession)
 
-
 def main():
 
     parser = argparse.ArgumentParser(description="Convert a BLAST XML result into a nicely readable html page",
@@ -265,6 +262,13 @@ def main():
                              help='The input Blast XML file')
     parser.add_argument('-o', '--output', type=argparse.FileType(mode='w'), default=sys.stdout,
                         help='The output html file')
+    # We just want the file name here, so jinja can open the file
+    # itself. But it is easier to just use a FileType so argparse can
+    # handle the errors. This introduces a small race condition when
+    # jinja later tries to re-open the template file, but we don't
+    # care too much.
+    parser.add_argument('--template', type=argparse.FileType(mode='r'), default='blast_html.html.jinja',
+                        help='The template file to use. Defaults to blast_html.html.jinja')
 
     args = parser.parse_args()
     if args.input == None:
@@ -272,7 +276,12 @@ def main():
     if args.input == None:
         parser.error('no input specified')
 
-    b = BlastVisualize(args.input)
+    templatedir, templatename = path.split(args.template.name)
+    args.template.close()
+    if not templatedir:
+        templatedir = '.'
+
+    b = BlastVisualize(args.input, templatedir, templatename)
     b.render(args.output)
 
 
