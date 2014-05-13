@@ -182,10 +182,6 @@
       height: 4px;
       }
 
-
-      
-      div#descriptions {
-      }
       
       table.descriptiontable {
       font-size: 85%;
@@ -225,7 +221,7 @@
 
 
       
-      #alignments .white {
+      .alignments .white {
       padding: 1.5em 1em;
       }
       
@@ -344,7 +340,7 @@
     <div id=content>
       <h1>Nucleotide Sequence ({{length}} letters)</h1>
 
-      <div class=header>
+      <section class=header>
 
         <table class=headerdata>
           {% for param, value in params %}
@@ -352,21 +348,21 @@
           {% endfor %}
         </table>
         
-      </div>
+      </section>
       
       {% if not (blast.BlastOutput_iterations.findall('Iteration') and
                  blast.BlastOutput_iterations.Iteration.Iteration_hits.findall('Hit')) %}
-      <div class=nodata>
+      <section class=nodata>
         <h2>No Results</h2>
         <div class=grey>
           No Matches
         </div>
-      </div>
+      </section>
       {% else %}
 
 
       
-      <div class=graphics>
+      <section class=graphics>
         <h2>Graphic Summary</h2>
 
         <div class=grey>
@@ -417,11 +413,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
 
       
-      <div id=descriptions>
+      <section class=descriptions>
         <h2>Descriptions</h2>
 
         <div class=grey><div class=white>
@@ -456,11 +452,11 @@
             </table>
             
         </div></div>
-      </div>
+      </section>
 
       
 
-      <div id=alignments>
+      <section class=alignments>
         <h2>Alignments</h2>
         
         <div class=grey><div class=white>
@@ -530,7 +526,7 @@
 
             {% endfor %}
         </div></div>
-      </div>
+      </section>
 
       {% endif %}
     </div>
