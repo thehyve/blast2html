@@ -54,6 +54,12 @@
       #nodata {
       font-weight: bold;
       }
+
+      .index div.indexentry {
+      margin: .6em;
+      font-weight: bold;
+      font-size: 100%;
+      }
       
       .headerdata {
       font-size: 90%;
@@ -94,7 +100,7 @@
       .graphic {
       background-color: white;
       border: 2px solid black;
-      padding: .5em 1.5em;
+      padding: 1.5em;
       margin: auto;
       }
 
@@ -157,6 +163,9 @@
       margin: .5em 0 .5em 0;
       color: white;
       }
+      .scale .graphicitem {
+      position: relative;
+      }
       .scale .graphicitem div {
       margin: 0 1px;
       padding: 0 2px;
@@ -169,6 +178,13 @@
       }
       .scale .graphicitem:last-child div {
       margin-right: 0px;
+      }
+      .scale .graphicitem .lastlabel {
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      background-color: transparent;
+      color: red;
       }
 
       a.matchresult {
@@ -349,9 +365,25 @@
       </section>
 
       {% else %}
+
+      {% if blast.BlastOutput_iterations.findall('Iteration') | length > 1 %}
+      <section class=index>
+        <h1>Queries</h1>
+
+        {% for result in blast.BlastOutput_iterations.Iteration %}
+        <div class=indexentry><a href="#match{{result['Iteration_iter-num']}}">
+            {% set hits = result|hits %}
+            {{result['Iteration_query-ID']}}: {{result['Iteration_query-def']}}
+            ({{result|len}} letters, {{hits|length}} hits)
+        </a></div>
+        {% endfor %}
+        
+      </section>
+      {% endif %}
+
       {% for result in blast.BlastOutput_iterations.Iteration %}
       
-      <section class=match>
+      <section class=match id=match{{result['Iteration_iter-num']}}>
       
         <h1>Nucleotide Sequence ({{result|len}} letters)</h1>
 
@@ -401,11 +433,18 @@
                 <div class=scale>
                   <div>query:</div>
                   <div class=graphicrow>
-                    {% for s in result|queryscale %}
-                    <div class=graphicitem style="width: {{s.width}}%">
-                      <div>{{s.label}}</div>
+                    <div>
+                      {% for s in result|queryscale %}
+                      <div class=graphicitem style="width: {{s.width}}%">
+                        {% if s.width > 3.0 %}
+                        <div>{{s.label}}</div>
+                        {% else %}
+                        <div>&nbsp;</div>
+                        <div class=lastlabel>{{s.label}}</div>
+                        {% endif %}
+                      </div>
+                      {% endfor %}
                     </div>
-                    {% endfor %}
                   </div>
                   <div style="clear: left"></div>
                 </div>

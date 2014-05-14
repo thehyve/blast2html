@@ -232,9 +232,11 @@ class BlastVisualize:
         percent_multiplier = 100 / query_length
         for i in range(1, query_length+1):
             if i % skip == 0:
-                yield dict(label = i, width = skip * percent_multiplier)
+                yield dict(label = i, width = skip * percent_multiplier, shorter = False)
         if query_length % skip != 0:
-            yield dict(label = query_length, width = (query_length % skip) * percent_multiplier)
+            yield dict(label = query_length,
+                       width = (query_length % skip) * percent_multiplier,
+                       shorter = True)
 
     @filter
     def hit_info(self, result):
