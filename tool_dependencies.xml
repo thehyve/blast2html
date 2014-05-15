@@ -19,12 +19,20 @@
     
     <tests>
         <test>
-            <param name="input" value="blast-view_test1_in.xml"/>
-            <output name="out_file1" file="blast-view_test1_out.html"/>
+            <param name="input" value="blast xml example1.xml"/>
+            <output name="out_file1" file="blast xml example1.html"/>
         </test>
         <test>
-            <param name="input" value="blast-view_test2_in.xml"/>
-            <output name="out_file1" file="blast-view_test2_out.html"/>
+            <param name="input" value="blast xml example2.xml"/>
+            <output name="out_file1" file="blast xml example2.html"/>
+        </test>
+        <test>
+            <param name="input" value="blast xml example3.xml"/>
+            <output name="out_file1" file="blast xml example3.html"/>
+        </test>
+        <test>
+            <param name="input" value="blast xml example4.xml"/>
+            <output name="out_file1" file="blast xml example4.html"/>
         </test>
     </tests>
     

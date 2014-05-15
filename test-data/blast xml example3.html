@@ -1,0 +1,3530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name=generator content="blast2html; see ...">
+    
+    <title>Blast output</title>
+    
+    <style>
+      body {
+      color: #333333;
+      font-family: Arial,Sans-Serif;
+      }
+
+      :link {
+      color: #336699;
+      }
+
+      .right {
+      float: right;
+      }
+
+      /* Galaxy with html sanitization enabled strips the header of this html page. If so, show the user a warning.*/
+      #strip_html_warning {
+      display: none;
+      }
+      
+      #content {
+      margin: 0 2em;
+      padding: 0.5em;
+      border: 1px solid #888888;
+      background-color: #d3dff5;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+      color: #2A6979;
+      font-family: arial,verdana,sans-serif;
+      letter-spacing: -1px;
+      margin: 1.2em 0 0.3em;
+      }
+
+      h1 {
+      border-bottom: 1px solid #CCCCCC;
+      font-size: 150%;
+      padding-bottom: 0.1em;
+      }
+
+      h2 {
+      font-size: 120%;
+      font-weight: bold;
+      }
+
+      h4.darkHeader {
+      color: #4D4D4D;
+      letter-spacing: 0;
+      font-weight: bold;
+      }
+
+      #nodata {
+      font-weight: bold;
+      }
+
+      .index {
+      margin-bottom: 3em;
+      }
+      .index div.indexentry {
+      margin: 1.2em 1.6em;
+      font-weight: bold;
+      font-size: 100%;
+      }
+      
+      .headerdata {
+      font-size: 90%;
+      }
+      .headerdata .param {
+      font-weight: bold;
+      text-align: right;
+      padding: 0 1em;
+      }
+
+      .grey {
+      background-color: #eeeeee;
+      border: 1px solid #cccccc;
+      padding: 1em;
+      }
+
+      .white {
+      background-color: white;
+      border: 1px solid #cccccc;
+      padding: 1.5em 2%;
+      }
+
+      .graphicrow {
+      clear: left;
+      width: 100%;
+      }
+
+      .graphicitem {
+      float: left;
+      }
+
+
+      
+      .graphics .grey {
+      text-align: center;
+      }
+
+      .graphic {
+      background-color: white;
+      border: 2px solid black;
+      padding: 1.5em;
+      margin: auto;
+      }
+
+      .centered, .defline, div.legend, div.tablewrapper {
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      .defline {
+      background-color: white;
+      border: 1px solid black;
+      margin: .5em auto;
+      padding-left: .2em;
+      padding-right: .2em;
+      max-width: 50em;
+      text-align: left;
+      height: 2.8em;
+      overflow-y: hidden;
+      }
+
+      div.legend {
+      max-width: 40em;
+      }
+      div.legend div {
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      border-spacing: 0;
+      }
+      div.legend div .graphicitem {
+      width: 20%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      }
+
+      div.tablewrapper {
+      width: 50%;
+      min-width: 60em;
+      }
+
+      /* For small widths we give the graphic 100% */
+      @media (max-width: 72.5em) {
+      div.tablewrapper {
+      width: 100%;
+      min-width: 0px;
+      }
+      }
+
+      .scale {
+      width: 100%;
+      margin: .5em 0;
+      font-weight: bold;
+      }
+      .scale div {
+      color: red;
+      text-align: left;
+      }
+      .scale .graphicrow {
+      margin: .5em 0 .5em 0;
+      color: white;
+      }
+      .scale .graphicitem {
+      position: relative;
+      }
+      .scale .graphicitem div {
+      margin: 0 1px;
+      padding: 0 2px;
+      text-align: right;
+      background-color: red;
+      color: white;
+      }
+      .scale .graphicitem:first-child div {
+      margin-left: 0px;
+      }
+      .scale .graphicitem:last-child div {
+      margin-right: 0px;
+      }
+      .scale .graphicitem .lastlabel {
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      background-color: transparent;
+      color: red;
+      }
+
+      a.matchresult {
+      display: block;
+      margin: 0;
+      padding: 0;
+      }
+      div.matchrow {
+      margin-top: 4px;
+      }
+      div.matchrow, div.matchitem {
+      height: 4px;
+      }
+
+      
+      table.descriptiontable {
+      font-size: 85%;
+      border: 1px solid #97b0c8;
+      border-spacing: 0;
+      color: #222222;
+      line-height: 1.3em;
+      background-color: white;
+      }
+      table.descriptiontable col:first-child {
+      width: 100%;
+      }
+      table.descriptiontable tr:hover {
+      background-color: #D5DEE3;
+      }
+      table.descriptiontable th {
+      color: #14376C;
+      font-weight: normal;
+      background-color: #F0F0F0;
+      background: linear-gradient(#FFFFFF, #F0F0F0);
+      border-bottom: 1px solid #D4DFE9;
+      border-right: 1px solid #CFCFCF;
+      border-left: 0px solid black;
+      border-top: 0px solid black;
+      }
+      table.descriptiontable td {
+      overflow: hidden;
+      text-align: center;
+      padding: .4em .8em;
+      }
+      table.descriptiontable td div {
+      width: 1em;
+      overflow: visible;
+      white-space: nowrap;
+      text-align: left;
+      }
+
+
+      
+      .alignments .white {
+      padding: 1.5em 1em;
+      }
+      
+      .alignment {
+      border-top: 1px solid black;
+      padding-left: 1em;
+      padding-right: 1em;
+      }
+      
+      div.linkheader {
+      padding-top: .2em;
+      font-size: 85%;
+      color: #14376C;
+      }
+      div.linkheader a.linkheader {
+      margin-right: 1em;
+      }
+      div.linkheader .right a {
+      text-decoration: none;
+      }
+
+      .title .hittitle {
+      color: #222222;
+      margin-bottom: .3em;
+      }
+      .title .titleinfo {
+      font-size: 80%;
+      margin-top: 0;
+      margin-bottom: .3em;
+      }
+      .title .titleinfo .b {
+      color: #606060;
+      font-weight: bold;
+      font-size: 90%;
+      }
+
+      .moretitles {
+      margin: 1.2em;
+      }
+      .moretitles .titleinfo {
+      margin: 0;
+      padding: 0;
+      }
+      .moretitles .hittitle {
+      margin: .4em 0 .2em 0;
+      padding: 0;
+      }
+      
+      a.showmoretitles {
+      font-size: 75%;
+      color: #336699;
+      font-weight: bold;
+      margin-top: 0;
+      }
+      a.showmoretitles:hover {
+      }
+
+      .hotspot {
+      color: #606060;
+      font-family: verdana, arial, sans-serif;
+      margin-bottom: 2.5em;
+      }
+
+      .hotspot p.range {
+      font-size: 70%;
+      margin-top: 0;
+      margin-top: 1em;
+      margin-bottom: .2em;
+      }
+      .hotspot p.range span.range {
+      font-weight: bold;
+      }
+      .hotspot p.range a.range {
+      margin-left: .5em;
+      }
+
+      table.hotspotstable {
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+      text-align: left;
+      border-collapse: collapse;
+      }
+      table.hotspotstable th, table.hotspotstable td {
+      padding: .1em 1em;
+      }
+      table.hotspotstable th {
+      font-size: 70%;
+      }
+      table.hotspotstable td {
+      min-width: 7em;
+      color: #222222;
+      font-size: 80%;
+      }
+
+      pre.alignmentgraphic {
+      color: #222222;
+      }
+
+      footer {
+      text-align: center;
+      color: #cccccc;
+      font-size: 70%;
+      margin-top: 1em;
+      }
+      footer :link {
+      color: #5588cc;
+      }
+      
+    </style>
+
+    <script type="text/javascript">
+      function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if(e.style.display != 'block')
+              e.style.display = 'block';
+          else
+              e.style.display = 'none';
+      }
+    </script>
+
+  </head>
+
+  
+  <body>
+    
+    <div id="strip_html_warning">
+      <!-- This div should be hidden by the header css block. Galaxy
+      strips all css, breaking this page but making this warning
+      visible. This warning contains some ugly old skool tabular html
+      layout that is not stripped. -->
+      <table bgcolor="#FFE5C9"><tr><td><font color="red"><b>
+                <font size=5><center>This html page seems to have been stripped by Galaxy.</center></font>
+                Disable Galaxy's html sanitization feature to view the full page (see <font face=monospace>sanitize_all_html</font> in your galaxy's universe_wsgi.ini), or download this page instead of viewing it in Galaxy.
+      </b></font></td></tr></table>
+    </div>
+    
+    <div id=content>
+
+
+      <section class=index>
+        <h1>Queries</h1>
+
+        <div class=indexentry><a href="#match1">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match2">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match3">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match4">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match5">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match6">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match7">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match8">
+            Query_1: Forward_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match9">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match10">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match11">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match12">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match13">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match14">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match15">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match16">
+            Query_2: Reverse_Primer|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match17">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match18">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match19">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match20">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match21">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match22">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match23">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match24">
+            Query_3: Probe|NOST-Spec_(Genetic_ID)
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match25">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match26">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match27">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match28">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match29">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match30">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match31">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match32">
+            Query_4: Forward_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (24 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match33">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match34">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match35">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match36">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match37">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match38">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match39">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match40">
+            Query_5: Reverse_Primer|QL-ELE-Bt-F1(mod)/Bt-R
+            (20 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match41">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match42">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match43">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match44">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match45">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match46">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match47">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match48">
+            Query_6: Probe|QL-ELE-Bt-F1(mod)/Bt-R
+            (25 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match49">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match50">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match51">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match52">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match53">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match54">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 0 hits)
+        </a></div>
+        <div class=indexentry><a href="#match55">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 1 hits)
+        </a></div>
+        <div class=indexentry><a href="#match56">
+            Query_7: Amplicon|QL-ELE-Bt-F1(mod)/Bt-R
+            (74 letters, 1 hits)
+        </a></div>
+
+      </section>
+
+      
+      <section class=match id=match1>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match2>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match3>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline3>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>2</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>4</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>10</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>14</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>20</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline3").innerHTML="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000"'
+                   onmouseout='document.getElementById("defline3").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000"
+                              id="description1">
+                        DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>7.011e-08</td>
+                  <td>100%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">Subject_3</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">Subject_3</a>
+                    <span class=b>Length:</span> 323
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 200 to 219</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign&amp;from=200&amp;to=219">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=graph&amp;log$=nuclalign&amp;from=200&amp;to=219">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>20/20(100%)</td>
+                      <td>0/20(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  AGCGCGCAAACTAGGATAAA  20
+                ||||||||||||||||||||
+Subject    200  AGCGCGCAAACTAGGATAAA  219</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match4>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match5>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match6>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline6>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>2</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>4</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>10</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>14</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>20</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline6").innerHTML="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000"'
+                   onmouseout='document.getElementById("defline6").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000"
+                              id="description1">
+                        AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>7.011e-08</td>
+                  <td>100%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">Subject_6</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">Subject_6</a>
+                    <span class=b>Length:</span> 2457
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 2119 to 2138</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign&amp;from=2119&amp;to=2138">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=graph&amp;log$=nuclalign&amp;from=2119&amp;to=2138">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>20/20(100%)</td>
+                      <td>0/20(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  AGCGCGCAAACTAGGATAAA  20
+                ||||||||||||||||||||
+Subject   2119  AGCGCGCAAACTAGGATAAA  2138</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match7>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match8>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match9>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match10>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match11>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match12>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match13>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match14>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match15>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match16>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match17>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match18>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline18>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>2</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>4</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>10</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>14</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>20</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline18").innerHTML="AJ308515.1|GenBank|insert_GTS-40-3-2|Synthetic_construct_for_NOS_3\u0027UTR/plant_junction_region.|-9105899556052450000"'
+                   onmouseout='document.getElementById("defline18").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="AJ308515.1|GenBank|insert_GTS-40-3-2|Synthetic_construct_for_NOS_3&#39;UTR/plant_junction_region.|-9105899556052450000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: transparent; width: 15.0%"></div>
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 85.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="AJ308515.1|GenBank|insert_GTS-40-3-2|Synthetic_construct_for_NOS_3&#39;UTR/plant_junction_region.|-9105899556052450000"
+                              id="description1">
+                        AJ308515.1|GenBank|insert_GTS-40-3-2|Synthetic_construct_for_NOS_3&#39;UTR/plant_junction_region.|-9105899556052450000
+                  </a></div></td>
+                  <td>31.9</td>
+                  <td>31.9</td>
+                  <td>85%</td>
+                  <td>2.981e-06</td>
+                  <td>100%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=genbank&amp;log$=nuclalign">Subject_2</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>AJ308515.1|GenBank|insert_GTS-40-3-2|Synthetic_construct_for_NOS_3&#39;UTR/plant_junction_region.|-9105899556052450000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=genbank&amp;log$=nuclalign">Subject_2</a>
+                    <span class=b>Length:</span> 1045
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 2 to 18</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=genbank&amp;log$=nuclalign&amp;from=2&amp;to=18">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_2?report=graph&amp;log$=nuclalign&amp;from=2&amp;to=18">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>31.9 bits(34)</td>
+                      <td>0.0</td>
+                      <td>17/17(100%)</td>
+                      <td>0/17(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        4  GCGCGGTGTCATCTATG  20
+                |||||||||||||||||
+Subject      2  GCGCGGTGTCATCTATG  18</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match19>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline19>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>2</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>4</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>10</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>14</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>20</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline19").innerHTML="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000"'
+                   onmouseout='document.getElementById("defline19").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000"
+                              id="description1">
+                        DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>7.011e-08</td>
+                  <td>100%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">Subject_3</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>DJ437711|GenBank|insert_MIR604|Corn_Event_MIR604,_Left_Border_region|-5751164067366620000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign">Subject_3</a>
+                    <span class=b>Length:</span> 323
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 224 to 243</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=genbank&amp;log$=nuclalign&amp;from=224&amp;to=243">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_3?report=graph&amp;log$=nuclalign&amp;from=224&amp;to=243">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>20/20(100%)</td>
+                      <td>0/20(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  CGCGCGCGGTGTCATCTATG  20
+                ||||||||||||||||||||
+Subject    224  CGCGCGCGGTGTCATCTATG  243</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match20>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match21>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match22>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline22>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>2</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>4</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>10</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>14</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.0%">
+                        <div>20</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline22").innerHTML="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000"'
+                   onmouseout='document.getElementById("defline22").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000"
+                              id="description1">
+                        AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>7.011e-08</td>
+                  <td>100%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">Subject_6</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>AB209952.1|GenBank|insert_GTS-40-3-2|Glycine_max_transgenic_cp4epsps_gene_for_5-enol-pyruvylshikimate-3-phospate_synthase_class_2_precursor,_complete_cds|-9105899556052450000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign">Subject_6</a>
+                    <span class=b>Length:</span> 2457
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 2143 to 2162</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=genbank&amp;log$=nuclalign&amp;from=2143&amp;to=2162">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_6?report=graph&amp;log$=nuclalign&amp;from=2143&amp;to=2162">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>20/20(100%)</td>
+                      <td>0/20(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  CGCGCGCGGTGTCATCTATG  20
+                ||||||||||||||||||||
+Subject   2143  CGCGCGCGGTGTCATCTATG  2162</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match23>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match24>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match25>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match26>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match27>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match28>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match29>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match30>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match31>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match32>
+      
+        <h1>Nucleotide Sequence (24 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match33>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match34>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match35>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match36>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match37>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match38>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match39>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match40>
+      
+        <h1>Nucleotide Sequence (20 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match41>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match42>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match43>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match44>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match45>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match46>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match47>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline47>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>3</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>9</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>15</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>21</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>24</div>
+                      </div>
+                      <div class=graphicitem style="width: 4.0%">
+                        <div>25</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline47").innerHTML="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000"'
+                   onmouseout='document.getElementById("defline47").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000"
+                              id="description1">
+                        AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>9.338e-08</td>
+                  <td>92%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">Subject_7</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">Subject_7</a>
+                    <span class=b>Length:</span> 4180
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 1541 to 1565</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign&amp;from=1541&amp;to=1565">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=graph&amp;log$=nuclalign&amp;from=1541&amp;to=1565">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>23/25(92%)</td>
+                      <td>0/25(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  ACATGAACAGCGCCTTGACCACAGC  25
+                |||||||||||||| ||||||| ||
+Subject   1541  ACATGAACAGCGCCCTGACCACCGC  1565</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match48>
+      
+        <h1>Nucleotide Sequence (25 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline48>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>3</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>6</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>9</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>12</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>15</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>18</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>21</div>
+                      </div>
+                      <div class=graphicitem style="width: 12.0%">
+                        <div>24</div>
+                      </div>
+                      <div class=graphicitem style="width: 4.0%">
+                        <div>25</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline48").innerHTML="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000"'
+                   onmouseout='document.getElementById("defline48").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: black; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000"
+                              id="description1">
+                        EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000
+                  </a></div></td>
+                  <td>37.4</td>
+                  <td>37.4</td>
+                  <td>100%</td>
+                  <td>9.338e-08</td>
+                  <td>92%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">Subject_8</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">Subject_8</a>
+                    <span class=b>Length:</span> 4983
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 2344 to 2368</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign&amp;from=2344&amp;to=2368">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=graph&amp;log$=nuclalign&amp;from=2344&amp;to=2368">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>37.4 bits(40)</td>
+                      <td>0.0</td>
+                      <td>23/25(92%)</td>
+                      <td>0/25(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  ACATGAACAGCGCCTTGACCACAGC  25
+                |||||||||||||| ||||||| ||
+Subject   2344  ACATGAACAGCGCCCTGACCACCGC  2368</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match49>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match50>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match51>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match52>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match53>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match54>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>No Hits</h2>
+          <div class=grey>
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>No hits found</td></tr>
+            </table>
+          </div>
+        </section>
+      </section>
+      
+      <section class=match id=match55>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline55>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>24</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>32</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>40</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>48</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>56</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>64</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>72</div>
+                      </div>
+                      <div class=graphicitem style="width: 2.7027027027027026%">
+                        <div>&nbsp;</div>
+                        <div class=lastlabel>74</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline55").innerHTML="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000"'
+                   onmouseout='document.getElementById("defline55").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: green; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000"
+                              id="description1">
+                        AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000
+                  </a></div></td>
+                  <td>89.7</td>
+                  <td>89.7</td>
+                  <td>100%</td>
+                  <td>6.629e-23</td>
+                  <td>86%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">Subject_7</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>AY326434|GenBank|insert_MON810|Synthetic_construct_truncated_CRYIA(b)_(cryIA(b))_gene,_partial_CDS|-2635190737607180000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign">Subject_7</a>
+                    <span class=b>Length:</span> 4180
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 1516 to 1589</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=genbank&amp;log$=nuclalign&amp;from=1516&amp;to=1589">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_7?report=graph&amp;log$=nuclalign&amp;from=1516&amp;to=1589">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>89.7 bits(98)</td>
+                      <td>0.0</td>
+                      <td>64/74(86%)</td>
+                      <td>0/74(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  GAGGAAATGCGTATTCAATTCAACGACATGAACAGCGCCTTGACCACAGCTATCCCATTGTTCGCAGTCCAGAA  74
+                ||||| ||||| || || ||||||||||||||||||||| ||||||| || |||||| | ||||| ||||||||
+Subject   1516  GAGGAGATGCGCATCCAGTTCAACGACATGAACAGCGCCCTGACCACCGCCATCCCACTCTTCGCCGTCCAGAA  1589</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+      
+      <section class=match id=match56>
+      
+        <h1>Nucleotide Sequence (74 letters)</h1>
+
+        <section class=header>
+
+          <table class=headerdata>
+            <tr><td class=param>Query ID:</td><td>Query_1</td></tr>
+            <tr><td class=param>Query definition:</td><td>Forward_Primer|NOST-Spec_(Genetic_ID)</td></tr>
+            <tr><td class=param>Query length:</td><td>20</td></tr>
+            <tr><td class=param>Program:</td><td>BLASTN 2.2.29+</td></tr>
+            <tr><td class=param>Database:</td><td></td></tr>
+          </table>
+
+        </section>
+
+
+        <section class=graphics>
+          <h2>Graphic Summary</h2>
+
+          <div class=grey>
+            <h3 class=centered>Distribution of 56 Blast Hits on the Query Sequence</h3>
+
+            <div class=defline id=defline56>
+              Mouse-over to show defline and scores, click to show alignments
+            </div>
+
+            <div class=graphic>
+              <h4 class=darkHeader>Color key for alignment scores</h4>
+              <div class=legend><div class=graphicrow>
+                  <div class=graphicitem style="background-color: black">&lt;40</div>
+                  <div class=graphicitem style="background-color: blue">40–50</div>
+                  <div class=graphicitem style="background-color: green">50–80</div>
+                  <div class=graphicitem style="background-color: magenta">80–200</div>
+                  <div class=graphicitem style="background-color: red">200≤</div>
+              </div></div>
+              <div style="clear: left"></div>
+
+              <div class=tablewrapper>
+
+                <div class=scale>
+                  <div>query:</div>
+                  <div class=graphicrow>
+                    <div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>8</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>16</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>24</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>32</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>40</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>48</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>56</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>64</div>
+                      </div>
+                      <div class=graphicitem style="width: 10.81081081081081%">
+                        <div>72</div>
+                      </div>
+                      <div class=graphicitem style="width: 2.7027027027027026%">
+                        <div>&nbsp;</div>
+                        <div class=lastlabel>74</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: left"></div>
+                </div>
+
+                <a class=matchresult
+                   href="#hit1"
+                   onmouseover='document.getElementById("defline56").innerHTML="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000"'
+                   onmouseout='document.getElementById("defline56").innerHTML="Mouse-over to show defline and scores, click to show alignments"'
+                   title="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000">
+                  <div class="matchrow graphicrow">
+                    <div class="matchitem graphicitem"
+                         style="background-color: green; width: 100.0%"></div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section class=descriptions>
+          <h2>Descriptions</h2>
+
+          <div class=grey><div class=white>
+              <h4 class=darkHeader>Sequences producing significant alignments:</h4>
+
+              <table class=descriptiontable>
+                <col/><col/><col/><col/><col/><col/><col/>
+                <tr>
+                  <th>Description</th>
+                  <th>Max score</th>
+                  <th>Total score</th>
+                  <th>Query cover</th>
+                  <th>E value</th>
+                  <th>Ident</th>
+                  <th>Accession</th>
+                </tr>
+                <tr>
+                  <td><div><a href="#hit1"
+                              title="EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000"
+                              id="description1">
+                        EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000
+                  </a></div></td>
+                  <td>89.7</td>
+                  <td>89.7</td>
+                  <td>100%</td>
+                  <td>6.629e-23</td>
+                  <td>86%</td>
+                  <td><a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">Subject_8</a></td>
+                </tr>
+              </table>
+
+          </div></div>
+        </section>
+
+
+
+        <section class=alignments>
+          <h2>Alignments</h2>
+
+          <div class=grey><div class=white>
+              <div class=alignment id=hit1>
+
+                <div class=linkheader>
+                  <div class=right><a href="#description1">Descriptions</a></div>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">GenBank</a>
+                  <a class=linkheader href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=graph&amp;log$=nuclalign">Graphics</a>
+                </div>
+
+                <div class=title>
+                  <p class=hittitle>EUG|RIKILT|plasmid_pV-ZMBK07|plasmid_pV-ZMBK07|-2635190737607180000</p>
+                  <p class=titleinfo>
+                    <span class=b>Sequence ID:</span> <a href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign">Subject_8</a>
+                    <span class=b>Length:</span> 4983
+                    <span class=b>Number of Matches:</span> 1
+                  </p>
+                </div>
+
+
+                <div class=hotspot>
+                  <p class=range>
+                    <span class=range>Range 1: 2319 to 2392</span>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=genbank&amp;log$=nuclalign&amp;from=2319&amp;to=2392">GenBank</a>
+                    <a class=range href="http://www.ncbi.nlm.nih.gov/nucleotide/Subject_8?report=graph&amp;log$=nuclalign&amp;from=2319&amp;to=2392">Graphics</a>
+                  </p>
+
+                  <table class=hotspotstable>
+                    <tr>
+                      <th>Score</th><th>Expect</th><th>Identities</th><th>Gaps</th><th>Strand</th>
+                    </tr>
+                    <tr>
+                      <td>89.7 bits(98)</td>
+                      <td>0.0</td>
+                      <td>64/74(86%)</td>
+                      <td>0/74(0%)</td>
+                      <td>Plus/Plus</td>
+                    </tr>
+                  </table>
+
+                  <pre class=alignmentgraphic>Query        1  GAGGAAATGCGTATTCAATTCAACGACATGAACAGCGCCTTGACCACAGCTATCCCATTGTTCGCAGTCCAGAA  74
+                ||||| ||||| || || ||||||||||||||||||||| ||||||| || |||||| | ||||| ||||||||
+Subject   2319  GAGGAGATGCGCATCCAGTTCAACGACATGAACAGCGCCCTGACCACCGCCATCCCACTCTTCGCCGTCCAGAA  2392</pre>
+                </div>
+
+              </div>
+
+          </div></div>
+        </section>
+      </section>
+
+    </div>
+
+    <footer>
+      This page was generated by <a href="...">blast2html</a>.
+    </footer>
+  </body>
+</html>
+
