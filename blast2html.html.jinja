@@ -414,7 +414,9 @@
         <section>
           <h2>No Hits</h2>
           <div class=grey>
-            This query did not match anywhere
+            <table class=headerdata>
+              <tr><td class=param>Message:</td><td>{{result.Iteration_message}}</td></tr>
+            </table>
           </div>
         </section>
         {% else %}

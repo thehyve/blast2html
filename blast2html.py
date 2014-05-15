@@ -63,11 +63,20 @@ def othertitles(hit):
 
 @filter
 def hitid(hit):
-    return hit.Hit_id.text.split('|', 2)[1]
+    hitid = hit.Hit_id.text
+    s = hitid.split('|', 2)
+    if len(s) >= 2:
+        return s[1]
+    return hitid
 
 @filter
 def seqid(hit):
-    return hit.Hit_id.text.split('|', 2)[2]
+    hitid = hit.Hit_id.text
+    s = hitid.split('|', 2)
+    if len(s) >= 3:
+        return s[2]
+    return hitid
+
 
 @filter
 def alignment_pre(hsp):
