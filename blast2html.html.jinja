@@ -20,6 +20,11 @@
       float: right;
       }
 
+      /* Galaxy with html sanitization enabled strips the header of this html page. If so, show the user a warning.*/
+      #strip_html_warning {
+      display: none;
+      }
+      
       #content {
       margin: 0 2em;
       padding: 0.5em;
@@ -366,6 +371,10 @@
 
   
   <body>
+    <div id="strip_html_warning" style="border: 3px solid red; color: red">
+      This html seems to have been stripped by Galaxy. Disable Galaxy's html sanitization feature to view the full page, or download this page instead of viewing it in Galaxy.
+    </div>
+    
     <div id=content>
 
       {% if not blast.BlastOutput_iterations.findall('Iteration') %}
