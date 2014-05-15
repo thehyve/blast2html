@@ -1,0 +1,35 @@
+<tool id="blast2html" name="blast2html" version="0.0.1">
+    
+    <description>Convert BLAST XML to HTML</description>
+    
+    <requirements>
+        <requirement type="python-module">jinja2</requirement>
+        <requirement type="python-module">lxml</requirement>
+    </requirements>
+    
+    <command interpreter="python">blast2html.py -i "${input}" -o "${output}"</command>
+    
+    <inputs>
+        <param format="blast" name="input" type="data" label="Source file"/>
+    </inputs>
+    
+    <outputs>
+        <data format="html" name="output" />
+    </outputs>
+    
+    <tests>
+        <test>
+            <param name="input" value="blast-view_test1_in.xml"/>
+            <output name="out_file1" file="blast-view_test1_out.html"/>
+        </test>
+        <test>
+            <param name="input" value="blast-view_test2_in.xml"/>
+            <output name="out_file1" file="blast-view_test2_out.html"/>
+        </test>
+    </tests>
+    
+    <help>
+        This tool converts the default BLAST XML result into a HTML document
+    </help>
+    
+</tool>
