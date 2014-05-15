@@ -5,6 +5,7 @@
     <requirements>
         <requirement type="python-module">jinja2</requirement>
         <requirement type="python-module">lxml</requirement>
+        <requirement type="python-module">argparse</requirement>
     </requirements>
     
     <command interpreter="python">blast2html.py -i "${input}" -o "${output}"</command>
