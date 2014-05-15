@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Actually runs under either python 2 or 3
 
 # Copyright The Hyve B.V. 2014
 # License: GPL version 3 or higher
@@ -273,8 +274,10 @@ class BlastVisualize:
                        ident = "{:.0%}".format(float(min(hsp.Hsp_identity / blastxml_len(hsp) for hsp in hsps))),
                        accession = hit.Hit_accession)
 
-def main():
 
+def main():
+    default_template = path.join(path.dirname(__file__), 'blast2html.html.jinja')
+    
     parser = argparse.ArgumentParser(description="Convert a BLAST XML result into a nicely readable html page",
                                      usage="{} [-i] INPUT [-o OUTPUT]".format(sys.argv[0]))
     input_group = parser.add_mutually_exclusive_group(required=True)
@@ -289,7 +292,7 @@ def main():
     # handle the errors. This introduces a small race condition when
     # jinja later tries to re-open the template file, but we don't
     # care too much.
-    parser.add_argument('--template', type=argparse.FileType(mode='r'), default='blast2html.html.jinja',
+    parser.add_argument('--template', type=argparse.FileType(mode='r'), default=default_template,
                         help='The template file to use. Defaults to blast_html.html.jinja')
 
     args = parser.parse_args()

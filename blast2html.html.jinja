@@ -371,8 +371,16 @@
 
   
   <body>
-    <div id="strip_html_warning" style="border: 3px solid red; color: red">
-      This html seems to have been stripped by Galaxy. Disable Galaxy's html sanitization feature to view the full page, or download this page instead of viewing it in Galaxy.
+    
+    <div id="strip_html_warning">
+      <!-- This div should be hidden by the header css block. Galaxy
+      strips all css, breaking this page but making this warning
+      visible. This warning contains some ugly old skool tabular html
+      layout that is not stripped. -->
+      <table bgcolor="#FFE5C9"><tr><td><font color="red"><b>
+                <font size=5><center>This html page seems to have been stripped by Galaxy.</center></font>
+                Disable Galaxy's html sanitization feature to view the full page (see <font face=monospace>sanitize_all_html</font> in your galaxy's universe_wsgi.ini), or download this page instead of viewing it in Galaxy.
+      </b></font></td></tr></table>
     </div>
     
     <div id=content>
