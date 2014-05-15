@@ -232,7 +232,7 @@ class BlastVisualize:
         percent_multiplier = 100 / query_length
         for i in range(1, query_length+1):
             if i % skip == 0:
-                yield dict(label = i, width = skip * percent_multiplier, shorter = False)
+                yield dict(label = i, width = skip * percent_multiplier, shorter = False\)
         if query_length % skip != 0:
             yield dict(label = query_length,
                        width = (query_length % skip) * percent_multiplier,
@@ -281,7 +281,7 @@ def main():
     # handle the errors. This introduces a small race condition when
     # jinja later tries to re-open the template file, but we don't
     # care too much.
-    parser.add_argument('--template', type=argparse.FileType(mode='r'), default='blast_html.html.jinja',
+    parser.add_argument('--template', type=argparse.FileType(mode='r'), default='blast2html.html.jinja',
                         help='The template file to use. Defaults to blast_html.html.jinja')
 
     args = parser.parse_args()
