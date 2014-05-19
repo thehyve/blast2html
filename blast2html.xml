@@ -1,4 +1,4 @@
-<tool id="blast2html" name="blast2html" version="0.0.3">
+<tool id="blast2html" name="blast2html" version="0.0.4">
     
     <description>Convert BLAST XML to HTML</description>
     
@@ -9,6 +9,12 @@
     </requirements>
     
     <command interpreter="python">blast2html.py -i "${input}" -o "${output}"</command>
+
+    <stdio>
+      <!-- Any exit code other than 0 is an error -->
+      <exit_code range="1:" />
+      <exit_code range=":-1" />
+    </stdio>
     
     <inputs>
         <param format="blast" name="input" type="data" label="Source file"/>
